@@ -22,15 +22,35 @@ function updateCart() {
   totalBox.textContent = total;
 }
 
-function checkout() {
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const payment = document.getElementById("payment").value;
-  const notes = document.getElementById("notes").value;
+<section class="checkout">
+  <h2>Your Cart 🛒</h2>
+  <ul id="cart"></ul>
+  <h3>Total: $<span id="total">0</span></h3>
 
-  if (!name || !phone || !payment || cart.length === 0) {
-    alert("Please add items, enter your name and phone number, and choose a payment method.");
-    return;
+  <h2>Checkout</h2>
+  <input id="name" placeholder="Your name" />
+  <input id="phone" placeholder="Your phone number" />
+
+  <select id="payment">
+    <option value="">Choose payment method</option>
+    <option value="Cash at pickup">Cash at pickup</option>
+    <option value="Cash App: $Ayeitsnasya25">Cash App</option>
+    <option value="Chime: $Janasya-Rivers">Chime</option>
+    <option value="Apple Pay: 912-592-9236">Apple Pay</option>
+  </select>
+
+  <textarea id="notes" placeholder="Flavor, drink, pickup time, and any notes"></textarea>
+
+  <div class="payment-box">
+    <h3>Payment Options</h3>
+    <p><strong>Cash App:</strong> $Ayeitsnasya25</p>
+    <p><strong>Chime:</strong> $Janasya-Rivers</p>
+    <p><strong>Apple Pay:</strong> 912-592-9236</p>
+    <p><strong>Cash:</strong> Allowed at pickup</p>
+  </div>
+
+  <button onclick="checkout()">Send Order</button>
+</section>
   }
 
   const orderText = cart
@@ -47,4 +67,23 @@ function checkout() {
     `Notes: ${notes}`;
 
   window.location.href = `sms:9125929236?&body=${message}`;
+}
+
+select {
+  display: block;
+  width: 90%;
+  max-width: 500px;
+  margin: 12px auto;
+  padding: 13px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.payment-box {
+  background: white;
+  max-width: 500px;
+  margin: 18px auto;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
 }
