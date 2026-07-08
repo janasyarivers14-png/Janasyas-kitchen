@@ -44,3 +44,13 @@ function checkout() {
 
   window.location.href = `sms:9125929236?&body=${message}`;
 }
+function addBananaPudding() {
+  const size = document.getElementById("bananaSize").value;
+  const qty = document.getElementById("bananaQty").value;
+
+  const cart = document.getElementById("cart");
+  const item = document.createElement("li");
+
+  item.textContent = `${qty} x ${size}`;
+  cart.appendChild(item);
+}
