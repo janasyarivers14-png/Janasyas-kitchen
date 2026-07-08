@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janasya's Kitchen</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Janasya's Kitchen</h1>
+    <p>Wings • Sweets • Treats</p>
+    <a href="#menu" class="btn">Order Now</a>
+  </header>
+
+  <section class="hero">
+    <h2>Fresh plates & sweet treats made with love 💕</h2>
+    <p>Welcome to JanasyasKitchen.com — place your order anytime!</p>
+  </section>
+
+  <section id="menu">
+    <h2>Wing Friday Menu 🍗</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>5 Piece Wing Meal</h3>
+        <p>Includes drink</p>
+        <strong>$10</strong>
+        <button onclick="addToCart('5 Piece Wing Meal', 10)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <h3>10 Piece Wing Meal</h3>
+        <p>Includes drink</p>
+        <strong>$15</strong>
+        <button onclick="addToCart('10 Piece Wing Meal', 15)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <h3>Wing + Rasta Pasta Combo</h3>
+        <p>6 wings, pasta, dinner roll & drink</p>
+        <strong>$18</strong>
+        <button onclick="addToCart('Wing + Rasta Pasta Combo', 18)">Add to Cart</button>
+      </div>
+    </div>
+
+    <h2>Sweets Menu 🍰</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Mini Cakes</h3>
+        <p>Oreo, Biscoff, Red Velvet, Strawberry Crunch, Banana Pudding</p>
+        <strong>$2.50 - $4</strong>
+        <button onclick="addToCart('Mini Cakes', 4)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <h3>Cookies</h3>
+        <p>Oreo, Red Velvet, Strawberry Crunch, Sprinkles, Biscoff</p>
+        <strong>$2 each</strong>
+        <button onclick="addToCart('Cookies', 2)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <h3>Chocolate Covered Strawberries</h3>
+        <p>6ct $12 • 12ct $24 • 24ct $48</p>
+        <strong>$12+</strong>
+        <button onclick="addToCart('Chocolate Covered Strawberries', 12)">Add to Cart</button>
+      </div>
+
+      <div class="card">
+        <h3>Banana Pudding Pans</h3>
+        <p>Small $10 • Medium $15 • Large $20</p>
+        <strong>$10+</strong>
+        <button onclick="addToCart('Banana Pudding Pan', 10)">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="checkout">
+    <h2>Your Cart 🛒</h2>
+    <ul id="cart"></ul>
+    <h3>Total: $<span id="total">0</span></h3>
+
+    <h2>Checkout</h2>
+    <input id="name" placeholder="Your name" />
+    <input id="phone" placeholder="Your phone number" />
+    <textarea id="notes" placeholder="Flavor, drink, pickup time, and any notes"></textarea>
+    <button onclick="checkout()">Send Order</button>
+  </section>
+
+  <footer>
+    <p>© 2026 Janasya's Kitchen | JanasyasKitchen.com</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
