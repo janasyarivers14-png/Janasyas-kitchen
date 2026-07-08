@@ -1,99 +1,50 @@
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fff4f7;
-  color: #3a1f1f;
+let cart = [];
+let total = 0;
+
+function addToCart(item, price) {
+  cart.push({ item, price });
+  total += price;
+  updateCart();
 }
 
-header {
-  text-align: center;
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #ff7aa2, #ffb347);
-  color: white;
+function updateCart() {
+  const cartList = document.getElementById("cart");
+  const totalBox = document.getElementById("total");
+
+  cartList.innerHTML = "";
+
+  cart.forEach((product) => {
+    const li = document.createElement("li");
+    li.textContent = `${product.item} - $${product.price}`;
+    cartList.appendChild(li);
+  });
+
+  totalBox.textContent = total;
 }
 
-header h1 {
-  font-size: 3rem;
-  margin: 0;
-}
+function checkout() {
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const payment = document.getElementById("payment").value;
+  const notes = document.getElementById("notes").value;
 
-.btn, button {
-  background: #8b1e3f;
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 25px;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: bold;
-}
+  if (!name || !phone || !payment || cart.length === 0) {
+    alert("Please add items, enter your name and phone number, and choose a payment method.");
+    return;
+  }
 
-.hero, section {
-  padding: 35px 20px;
-  text-align: center;
-}
+  const orderText = cart
+    .map(product => `${product.item} - $${product.price}`)
+    .join("%0A");
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: auto;
-}
+  const message =
+    `New Janasya's Kitchen Order:%0A%0A` +
+    `Name: ${name}%0A` +
+    `Phone: ${phone}%0A%0A` +
+    `Order:%0A${orderText}%0A%0A` +
+    `Total: $${total}%0A%0A` +
+    `Payment Method: ${payment}%0A%0A` +
+    `Notes: ${notes}`;
 
-.card {
-  background: white;
-  border-radius: 18px;
-  padding: 22px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: scale(1.03);
-}
-
-.card strong {
-  display: block;
-  font-size: 1.3rem;
-  margin: 12px 0;
-  color: #8b1e3f;
-}
-
-.checkout {
-  background: #ffe1eb;
-}
-
-input, textarea {
-  display: block;
-  width: 90%;
-  max-width: 500px;
-  margin: 12px auto;
-  padding: 13px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-}
-
-textarea {
-  height: 100px;
-}
-
-#cart {
-  list-style: none;
-  padding: 0;
-}
-
-#cart li {
-  background: white;
-  margin: 8px auto;
-  padding: 10px;
-  max-width: 400px;
-  border-radius: 10px;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  background: #3a1f1f;
-  color: white;
+  window.location.href = `sms:9125929236?&body=${message}`;
 }
