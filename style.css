@@ -261,3 +261,14 @@ button {
         transform: scale(1);
     }
 }
+select,
+input[type="number"] {
+  width: 90%;
+  max-width: 500px;
+  display: block;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+}
