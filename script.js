@@ -1,6 +1,44 @@
 let cart = [];
 let total = 0;
 
+// Wing Meals
+const wing5Flavor = document.getElementById("wing5Flavor");
+const wing5Type = document.getElementById("wing5Type");
+const wing5Drink = document.getElementById("wing5Drink");
+const wing5Qty = document.getElementById("wing5Qty");
+
+const wing10Flavor = document.getElementById("wing10Flavor");
+const wing10Type = document.getElementById("wing10Type");
+const wing10Drink = document.getElementById("wing10Drink");
+const wing10Qty = document.getElementById("wing10Qty");
+
+// Combo
+const comboFlavor = document.getElementById("comboFlavor");
+const comboDrink = document.getElementById("comboDrink");
+const comboQty = document.getElementById("comboQty");
+
+// Cakes
+const cakeFlavor = document.getElementById("cakeFlavor");
+const cakeSize = document.getElementById("cakeSize");
+const cakeQty = document.getElementById("cakeQty");
+
+// Cookies
+const cookieFlavor = document.getElementById("cookieFlavor");
+const cookieQty = document.getElementById("cookieQty");
+
+// Strawberries
+const strawberrySize = document.getElementById("strawberrySize");
+const strawberryQty = document.getElementById("strawberryQty");
+
+// Pretzels
+const pretzelQty = document.getElementById("pretzelQty");
+
+// Brownies
+const brownieQty = document.getElementById("brownieQty");
+
+// Banana Pudding
+const bananaSize = document.getElementById("bananaSize");
+const bananaQty = document.getElementById("bananaQty");
 function addToCart(name, price) {
   cart.push({ name, price: Number(price) });
   total += Number(price);
