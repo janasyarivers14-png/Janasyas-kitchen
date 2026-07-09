@@ -115,7 +115,13 @@ function checkout() {
     alert("Please add items to your cart and enter your name and phone number.");
     return;
   }
-
+  
+function removeItem(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+    updateCart();
+}
+  
   const orderText = cart
     .map((item) => `${item.name} - $${item.price.toFixed(2)}`)
     .join("%0A");
@@ -129,4 +135,18 @@ function checkout() {
     `Notes: ${notes}`;
 
   window.location.href = `sms:9125929236?&body=${message}`;
+}
+.remove-btn {
+    margin-left: 10px;
+    background: #d62828;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.remove-btn:hover {
+    background: #a31621;
 }
