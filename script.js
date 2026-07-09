@@ -29,8 +29,14 @@ function updateCart() {
   totalBox.textContent = total.toFixed(2);
 }
 
+function removeItem(index) {
+  total -= cart[index].price;
+  cart.splice(index, 1);
+  updateCart();
+}
+
 function addMultiple(name, price, qty) {
-  for (let i = 0; i < qty; i++) {
+  for (let i = 0; i < Number(qty); i++) {
     addToCart(name, price);
 }
   
