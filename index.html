@@ -49,87 +49,44 @@
      <h3>Mini Cakes</h3>
 <p>Select your flavor and quantity.</p>
 
-<select id="cakeFlavor">
-    <option value="Oreo">Oreo</option>
-    <option value="Biscoff">Biscoff</option>
-    <option value="Red Velvet">Red Velvet</option>
-    <option value="Strawberry Crunch">Strawberry Crunch</option>
-    <option value="Banana Pudding">Banana Pudding</option>
-</select>
+<div class="card">
+    <h3>Chocolate Covered Strawberries</h3>
+    <p>6 Count $12 • 12 Count $24 • 24 Count $48</p>
+    <strong>$12+</strong>
+    <button onclick="addToCart('Chocolate Covered Strawberries', 12)">Add to Cart</button>
+</div>
 
-<select id="cakeSize">
-    <option value="Small" data-price="2.5">Small - $2.50</option>
-    <option value="Large" data-price="4">Large - $4</option>
-</select>
-
-<input type="number" id="cakeQty" min="1" value="1">
-
-<button onclick="addCake()">Add to Cart</button>
-
-    <h3>Cookies</h3>
-
-<select id="cookieFlavor">
-    <option>Oreo</option>
-    <option>Red Velvet</option>
-    <option>Strawberry Crunch</option>
-    <option>Sprinkles</option>
-    <option>Biscoff</option>
-</select>
-
-<input type="number" id="cookieQty" min="1" value="1">
-
-<button onclick="addCookies()">Add to Cart</button>
-        
-<h3>Banana Pudding Pans</h3>
-
-<select id="bananaSize">
-    <option value="Small Pan" data-price="10">Small - $10</option>
-    <option value="Medium Pan" data-price="15">Medium - $15</option>
-    <option value="Large Pan" data-price="20">Large - $20</option>
-</select>
-
-<input type="number" id="bananaQty" min="1" value="1">
-
-<button onclick="addBananaPudding()">Add to Cart</button>
-      <div class="card">
-        <h3>Chocolate Covered Strawberries</h3>
-        <p>6ct $12 • 12ct $24 • 24ct $48</p>
-        <strong>$12+</strong>
-        <button onclick="addToCart('Chocolate Covered Strawberries', 12)">Add to Cart</button>
-      </div>
 <div class="card">
     <h3>Chocolate Covered Pretzels</h3>
-    <p>Chocolate dipped pretzels</p>
+    <p><strong>$1.00 each</strong></p>
 
     <input type="number" id="pretzelQty" min="1" value="1">
 
     <button onclick="addPretzels()">Add to Cart</button>
 </div>
-      <div class="card">
-        <h3>Banana Pudding Pans</h3>
-        <p>Small $10 • Medium $15 • Large $20</p>
-        <strong>$10+</strong>
-        <div class="card">
+
+<div class="card">
     <h3>Brownies</h3>
-    <p>Fresh homemade brownies</p>
+    <p><strong>$1.50 each</strong></p>
 
     <input type="number" id="brownieQty" min="1" value="1">
 
     <button onclick="addBrownies()">Add to Cart</button>
 </div>
-<select id="bananaSize">
-  <option value="Small Banana Pudding Pan" data-price="10">Small - $10</option>
-  <option value="Medium Banana Pudding Pan" data-price="15">Medium - $15</option>
-  <option value="Large Banana Pudding Pan" data-price="20">Large - $20</option>
-</select>
 
-<input id="bananaQty" type="number" min="1" value="1">
+<div class="card">
+    <h3>Banana Pudding Pans</h3>
 
-<button onclick="addBananaPudding()">Add to Cart</button>
-      </div>
-    </div>
-  </section>
+    <select id="bananaSize">
+        <option value="Small Banana Pudding Pan" data-price="10">Small - $10</option>
+        <option value="Medium Banana Pudding Pan" data-price="15">Medium - $15</option>
+        <option value="Large Banana Pudding Pan" data-price="20">Large - $20</option>
+    </select>
 
+    <input type="number" id="bananaQty" min="1" value="1">
+
+    <button onclick="addBananaPudding()">Add to Cart</button>
+</div>
   <section class="checkout">
     <h2>Your Cart 🛒</h2>
     <ul id="cart"></ul>
