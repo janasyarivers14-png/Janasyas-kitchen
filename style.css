@@ -378,3 +378,76 @@ footer {
         bottom: 15px;
     }
 }
+.catering-popup {
+    position: fixed;
+    bottom: 25px;
+    right: 20px;
+    width: 320px;
+    background: white;
+    border: 3px solid #ff5fa2;
+    border-radius: 25px;
+    padding: 22px;
+    text-align: center;
+    z-index: 9999;
+    box-shadow: 0 12px 35px rgba(255, 105, 180, 0.35);
+    animation: popUp 0.8s ease, floatBox 3s ease-in-out infinite;
+}
+
+.catering-popup::before {
+    content: "🎈🎉🍓";
+    display: block;
+    font-size: 34px;
+    animation: bounce 1.4s infinite;
+}
+
+.catering-popup h2 {
+    color: #a31d4f;
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+.catering-popup p {
+    color: #3b1f1f;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.catering-popup a {
+    display: inline-block;
+    margin-top: 12px;
+    background: linear-gradient(135deg, #a31d4f, #ff69b4);
+    color: white;
+    padding: 12px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    animation: pulseBtn 1.5s infinite;
+}
+
+.popup-close {
+    background: #a31d4f;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+@keyframes popUp {
+    from { opacity: 0; transform: scale(.7) translateY(40px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes floatBox {
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes bounce {
+    50% { transform: scale(1.2) rotate(8deg); }
+}
+
+@keyframes pulseBtn {
+    50% { transform: scale(1.08); }
+}
