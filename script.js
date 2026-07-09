@@ -181,3 +181,6 @@ function closeCateringPopup() {
     const popup = document.getElementById("catering-popup");
     popup.style.display = "none";
 }
+function toggleCateringCard() {
+  document.getElementById("catering-card").classList.toggle("show");
+}
