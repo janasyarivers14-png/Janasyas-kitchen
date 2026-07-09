@@ -1,7 +1,14 @@
 let cart = JSON.parse(localStorage.getItem("janasyasCart")) || [];
 
 function saveCart(){localStorage.setItem("janasyasCart", JSON.stringify(cart));}
-function addToCart(name, price){cart.push({name, price:Number(price)});saveCart();renderCart();document.getElementById('cart').scrollIntoView({behavior:'smooth'});}
+function addToCart(name, price, quantity = 1) {
+  quantity = Number(quantity);
+  cart.push({
+    name: quantity + "x " + name,
+    price: price * quantity
+  });
+  updateCart();
+}
 function removeItem(index){cart.splice(index,1);saveCart();renderCart();}
 function clearCart(){cart=[];saveCart();renderCart();}
 function renderCart(){const box=document.getElementById('cart-items');const totalBox=document.getElementById('total');if(!box||!totalBox)return;if(cart.length===0){box.innerHTML='<p>Your cart is empty.</p>';totalBox.textContent='0.00';return;}let total=0;box.innerHTML='';cart.forEach((item,index)=>{total+=item.price;const div=document.createElement('div');div.className='cart-item';div.innerHTML=`<span>${item.name}</span><strong>$${item.price.toFixed(2)}</strong><button class="remove-btn" onclick="removeItem(${index})">Remove</button>`;box.appendChild(div);});totalBox.textContent=total.toFixed(2);}
