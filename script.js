@@ -187,3 +187,32 @@ function addBananaPudding() {
     Number(bananaQty.value)
   );
 }
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  total += Number(price);
+  updateCart();
+}
+
+function updateCart() {
+  const cartList = document.getElementById("cart");
+  const totalBox = document.getElementById("total");
+
+  cartList.innerHTML = "";
+
+  cart.forEach((item) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+    cartList.appendChild(li);
+  });
+
+  totalBox.textContent = total.toFixed(2);
+}
+
+function addMultiple(name, price, qty) {
+  for (let i = 0; i < qty; i++) {
+    addToCart(name, price);
+  }
+}
