@@ -77,3 +77,18 @@ input[type="number"]{
     font-size:16px;
     background:white;
 }
+function addPretzels() {
+    const qty = Number(document.getElementById("pretzelQty").value);
+
+    for (let i = 0; i < qty; i++) {
+        addToCart("Chocolate Covered Pretzel", 1);
+    }
+}
+
+function addBrownies() {
+    const qty = Number(document.getElementById("brownieQty").value);
+
+    for (let i = 0; i < qty; i++) {
+        addToCart("Brownie", 1.50);
+    }
+}
