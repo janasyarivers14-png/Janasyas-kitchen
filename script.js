@@ -1,3 +1,4 @@
+alert("Script Loaded!");
 let cart = [];
 let total = 0;
 
