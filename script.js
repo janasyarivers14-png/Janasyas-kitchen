@@ -65,3 +65,15 @@ function addBananaPudding() {
     addToCart(name, price);
   }
 }
+select,
+input[type="number"]{
+    width:90%;
+    max-width:400px;
+    margin:10px auto;
+    padding:12px;
+    display:block;
+    border-radius:12px;
+    border:1px solid #ddd;
+    font-size:16px;
+    background:white;
+}
