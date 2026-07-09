@@ -46,19 +46,51 @@
     <h2>Sweets Menu 🍰</h2>
     <div class="grid">
       <div class="card">
-        <h3>Mini Cakes</h3>
-        <p>Oreo, Biscoff, Red Velvet, Strawberry Crunch, Banana Pudding</p>
-        <strong>$2.50 - $4</strong>
-        <button onclick="addToCart('Mini Cakes', 4)">Add to Cart</button>
-      </div>
+     <h3>Mini Cakes</h3>
+<p>Select your flavor and quantity.</p>
 
-      <div class="card">
-        <h3>Cookies</h3>
-        <p>Oreo, Red Velvet, Strawberry Crunch, Sprinkles, Biscoff</p>
-        <strong>$2 each</strong>
-        <button onclick="addToCart('Cookies', 2)">Add to Cart</button>
-      </div>
+<select id="cakeFlavor">
+    <option value="Oreo">Oreo</option>
+    <option value="Biscoff">Biscoff</option>
+    <option value="Red Velvet">Red Velvet</option>
+    <option value="Strawberry Crunch">Strawberry Crunch</option>
+    <option value="Banana Pudding">Banana Pudding</option>
+</select>
 
+<select id="cakeSize">
+    <option value="Small" data-price="2.5">Small - $2.50</option>
+    <option value="Large" data-price="4">Large - $4</option>
+</select>
+
+<input type="number" id="cakeQty" min="1" value="1">
+
+<button onclick="addCake()">Add to Cart</button>
+
+    <h3>Cookies</h3>
+
+<select id="cookieFlavor">
+    <option>Oreo</option>
+    <option>Red Velvet</option>
+    <option>Strawberry Crunch</option>
+    <option>Sprinkles</option>
+    <option>Biscoff</option>
+</select>
+
+<input type="number" id="cookieQty" min="1" value="1">
+
+<button onclick="addCookies()">Add to Cart</button>
+        
+<h3>Banana Pudding Pans</h3>
+
+<select id="bananaSize">
+    <option value="Small Pan" data-price="10">Small - $10</option>
+    <option value="Medium Pan" data-price="15">Medium - $15</option>
+    <option value="Large Pan" data-price="20">Large - $20</option>
+</select>
+
+<input type="number" id="bananaQty" min="1" value="1">
+
+<button onclick="addBananaPudding()">Add to Cart</button>
       <div class="card">
         <h3>Chocolate Covered Strawberries</h3>
         <p>6ct $12 • 12ct $24 • 24ct $48</p>
