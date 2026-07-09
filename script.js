@@ -9,24 +9,23 @@ function addToCart(name, price) {
 }
 
 function updateCart() {
-  const cartList = document.getElementById("cart");
-  const totalBox = document.getElementById("total");
+    const cartList = document.getElementById("cart");
+    const totalBox = document.getElementById("total");
 
-  cartList.innerHTML = "";
+    cartList.innerHTML = "";
 
-  cart.forEach((item) => {
-    const li = document.createElement("li");
-    li.textContent = `${item.name} - $${item.price.toFixed(2)}`;
-    cartList.appendChild(li);
-  });
+    cart.forEach((item, index) => {
+        const li = document.createElement("li");
 
-  totalBox.textContent = total.toFixed(2);
-}
+        li.innerHTML = `
+            ${item.name} - $${item.price.toFixed(2)}
+            <button onclick="removeItem(${index})" class="remove-btn">❌ Remove</button>
+        `;
 
-function addMultiple(name, price, qty) {
-  for (let i = 0; i < qty; i++) {
-    addToCart(name, price);
-  }
+        cartList.appendChild(li);
+    });
+
+    totalBox.textContent = total.toFixed(2);
 }
 
 function addWing5() {
