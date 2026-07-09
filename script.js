@@ -118,11 +118,6 @@ function addBananaPudding() {
   );
 }
 
-function removeItem(index) {
-    total -= cart[index].price;
-    cart.splice(index, 1);
-    updateCart();
-}
 function checkout() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
