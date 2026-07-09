@@ -39,6 +39,7 @@
 
     <div class="card">
       <h3>5 Piece Wing Meal</h3>
+      <p class="price-tag">$10.00</p>
       <p>Includes drink</p>
 
       <label>Flavor</label>
@@ -67,6 +68,7 @@
 
     <div class="card">
       <h3>10 Piece Wing Meal</h3>
+      <p class="price-tag">$15.00</p>
       <p>Includes drink</p>
 
       <label>Flavor</label>
@@ -91,8 +93,45 @@
       <button onclick="addToCart('10 Piece Wing Meal - ' + wing10Flavor.value + ' - Drink: ' + wing10Drink.value, 15, wing10Qty.value)">
         $15 Add to Cart
       </button>
-    </div>
+      <div class="card special-card">
 
+    <h3>🔥 Friday Special 🔥</h3>
+
+    <p class="price-tag">$18.00</p>
+
+    <p>6 Wings + Rasta Pasta + Dinner Roll + Drink</p>
+
+    <label>Wing Flavor</label>
+    <select id="comboFlavor">
+        <option>Hot Honey</option>
+        <option>Garlic Parmesan</option>
+        <option>Buffalo</option>
+        <option>BBQ</option>
+        <option>Hot Honey Lemon Pepper</option>
+    </select>
+
+    <label>Drink</label>
+    <select id="comboDrink">
+        <option>Coke</option>
+        <option>Sprite</option>
+        <option>Dr Pepper</option>
+    </select>
+
+    <label>Quantity</label>
+    <input id="comboQty" type="number" value="1" min="1">
+
+    <button onclick="addToCart(
+        'Friday Special - ' +
+        document.getElementById('comboFlavor').value +
+        ' - Drink: ' +
+        document.getElementById('comboDrink').value,
+        18,
+        document.getElementById('comboQty').value
+    )">
+        $18 Add to Cart
+    </button>
+  </div>
+      
   </div>
 </section>
 
