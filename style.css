@@ -325,3 +325,37 @@ input[type="number"] {
 .card:hover {
     transform: translateY(-8px);
 }
+select,
+input[type="number"],
+input,
+textarea {
+  width: 90%;
+  max-width: 500px;
+  display: block;
+  margin: 12px auto;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  background: white;
+}
+
+textarea {
+  height: 120px;
+}
+
+.card strong {
+  display: block;
+  color: #9b1748;
+  font-size: 1.5rem;
+  margin: 15px 0;
+}
+
+#cart li {
+  background: white;
+  margin: 10px auto;
+  padding: 12px;
+  border-radius: 10px;
+  max-width: 500px;
+  list-style: none;
+}
