@@ -136,17 +136,3 @@ function removeItem(index) {
 
   window.location.href = `sms:9125929236?&body=${message}`;
 }
-.remove-btn {
-    margin-left: 10px;
-    background: #d62828;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.remove-btn:hover {
-    background: #a31621;
-}
