@@ -1,24 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Janasya's Kitchen</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Janasya's Kitchen</h1>
-    <p>Wings • Sweets • Treats</p>
-    <a href="#menu" class="btn">Order Now</a>
-  </header>
 
-  <section class="hero">
-    <h2>Fresh plates & sweet treats made with love 💕</h2>
-    <p>Welcome to JanasyasKitchen.com — place your order anytime!</p>
-  </section>
+<header>
+  <h1>Janasya's Kitchen</h1>
+  <p>Fresh plates & sweet treats made with love 💕</p>
+  <a href="#menu" class="btn">Order Now</a>
+</header>
 
-  <section>
+<section id="menu">
   <h2>Wing Friday Menu 🍗</h2>
 
   <div class="grid">
@@ -46,7 +42,6 @@
       </select>
 
       <input id="wing5Qty" type="number" min="1" value="1">
-
       <strong>$10</strong>
       <button onclick="addWing5()">Add to Cart</button>
     </div>
@@ -75,7 +70,6 @@
       </select>
 
       <input id="wing10Qty" type="number" min="1" value="1">
-
       <strong>$15</strong>
       <button onclick="addWing10()">Add to Cart</button>
     </div>
@@ -99,14 +93,11 @@
       </select>
 
       <input id="comboQty" type="number" min="1" value="1">
-
       <strong>$18</strong>
       <button onclick="addCombo()">Add to Cart</button>
     </div>
   </div>
-</section>
 
-<section>
   <h2>Sweets Menu 🍰</h2>
 
   <div class="grid">
@@ -187,18 +178,23 @@
     </div>
   </div>
 </section>
-  <section class="checkout">
-    <h2>Your Cart 🛒</h2>
-    <ul id="cart"></ul>
-    <h3>Total: $<span id="total">0</span></h3>
 
-    <h2>Checkout</h2>
-    <input id="name" placeholder="Your name" />
-    <input id="phone" placeholder="Your phone number" />
-    <textarea id="notes" placeholder="Flavor, drink, pickup time, and any notes"></textarea>
-    <button onclick="checkout()">Send Order</button>
-  </section>
+<section class="checkout">
+  <h2>Your Cart 🛒</h2>
+  <ul id="cart"></ul>
+  <h3>Total: $<span id="total">0.00</span></h3>
 
-  <footer>
-    <p>© 2026 Janasya's Kitchen | JanasyasKitchen.com</p>
-  </footer>
+  <h2>Checkout</h2>
+  <input id="name" placeholder="Your name">
+  <input id="phone" placeholder="Your phone number">
+  <textarea id="notes" placeholder="Flavor, drink, pickup time, and any notes"></textarea>
+  <button onclick="checkout()">Send Order</button>
+</section>
+
+<footer>
+  <p>© 2026 Janasya's Kitchen | JanasyasKitchen.com</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
