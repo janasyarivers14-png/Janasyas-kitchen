@@ -122,18 +122,18 @@ function checkout() {
     alert("Please add items to your cart and enter your name and phone number.");
     return;
   }
-
   const orderText = cart
-    .map((item) => `${item.name} - $${item.price.toFixed(2)}`)
+    .map(item => `${item.name} - $${item.price.toFixed(2)}`)
     .join("%0A");
 
-  const message =
-    `New Janasya's Kitchen Order:%0A%0A` +
-    `Name: ${name}%0A` +
-    `Phone: ${phone}%0A%0A` +
-    `Order:%0A${orderText}%0A%0A` +
-    `Total: $${total.toFixed(2)}%0A%0A` +
-    `Notes: ${notes}`;
+const message =
+`New Janasya's Kitchen Order:%0A%0A` +
+`Name: ${name}%0A` +
+`Phone: ${phone}%0A%0A` +
+`Order:%0A${orderText}%0A%0A` +
+`Total: $${total.toFixed(2)}%0A%0A` +
+`Notes: ${notes}`;
 
-  window.location.href = `sms:9125929236?&body=${message}`;
+window.location.href =
+`sms:9125929236?body=${message}`;
 }
