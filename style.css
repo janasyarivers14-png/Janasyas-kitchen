@@ -8,3 +8,9 @@
   border-radius: 18px;
   font-size: 16px;
 }
+.price-tag {
+  color: #a31d4f;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 8px 0;
+}
