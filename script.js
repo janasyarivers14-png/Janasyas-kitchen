@@ -7,7 +7,8 @@ function addToCart(name, price, quantity = 1) {
     name: quantity + "x " + name,
     price: price * quantity
   });
-  updateCart();
+  saveCart();
+renderCart();
 }
 function removeItem(index){cart.splice(index,1);saveCart();renderCart();}
 function clearCart(){cart=[];saveCart();renderCart();}
