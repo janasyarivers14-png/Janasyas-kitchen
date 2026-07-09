@@ -7,31 +7,19 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="catering-popup" class="catering-popup">
-    <button class="popup-close" onclick="closeCateringPopup()">×</button>
+  
+    <div class="catering-bubble" onclick="toggleCateringCard()">
+  🍽️ Book Catering
+</div>
 
-    <div class="popup-badge">✨ NOW CATERING ✨</div>
-
-    <div class="popup-emoji">🎈🎉🍰🍓🍗</div>
-
-    <h2>Book Your Event!</h2>
-
-    <p>
-        I cater birthdays, weddings, baby showers,
-        graduations, family reunions, office lunches,
-        dessert tables and custom treats!
-    </p>
-
-    <div class="popup-buttons">
-        <a href="#contact" class="popup-btn">
-            📅 Get a Quote
-        </a>
-
-        <a href="sms:19125929236" class="popup-btn2">
-            📱 Text Me
-        </a>
-    </div>
-    
+<div id="catering-card" class="catering-card">
+  <button class="popup-close" onclick="toggleCateringCard()">×</button>
+  <div class="popup-emoji">🎈🎉🍓🍗</div>
+  <h2>Now Catering!</h2>
+  <p>Book food, treats, dessert tables, birthdays, baby showers, work lunches, and custom events.</p>
+  <a href="sms:19125929236" class="popup-btn">📱 Text Janasya</a>
+</div>
+  
   <header class="site-header">
     <div class="header-content">
       <p class="eyebrow">Fresh • Cute • Made With Love</p>
