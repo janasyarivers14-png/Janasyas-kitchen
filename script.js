@@ -29,6 +29,11 @@ function updateCart() {
   totalBox.textContent = total.toFixed(2);
 }
 
+function addMultiple(name, price, qty) {
+  for (let i = 0; i < qty; i++) {
+    addToCart(name, price);
+}
+  
 function addWing5() {
   addMultiple(
     `5 Piece Wing Meal - ${wing5Flavor.value}, ${wing5Type.value}, ${wing5Drink.value}`,
