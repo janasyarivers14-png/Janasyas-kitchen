@@ -106,6 +106,11 @@ function addBananaPudding() {
   );
 }
 
+function removeItem(index) {
+    total -= cart[index].price;
+    cart.splice(index, 1);
+    updateCart();
+}
 function checkout() {
   const name = document.getElementById("name").value;
   const phone = document.getElementById("phone").value;
@@ -115,13 +120,7 @@ function checkout() {
     alert("Please add items to your cart and enter your name and phone number.");
     return;
   }
-  
-function removeItem(index) {
-    total -= cart[index].price;
-    cart.splice(index, 1);
-    updateCart();
-}
-  
+
   const orderText = cart
     .map((item) => `${item.name} - $${item.price.toFixed(2)}`)
     .join("%0A");
