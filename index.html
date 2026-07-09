@@ -70,7 +70,15 @@
         <h3>Banana Pudding Pans</h3>
         <p>Small $10 • Medium $15 • Large $20</p>
         <strong>$10+</strong>
-        <button onclick="addToCart('Banana Pudding Pan', 10)">Add to Cart</button>
+<select id="bananaSize">
+  <option value="Small Banana Pudding Pan" data-price="10">Small - $10</option>
+  <option value="Medium Banana Pudding Pan" data-price="15">Medium - $15</option>
+  <option value="Large Banana Pudding Pan" data-price="20">Large - $20</option>
+</select>
+
+<input id="bananaQty" type="number" min="1" value="1">
+
+<button onclick="addBananaPudding()">Add to Cart</button>
       </div>
     </div>
   </section>
