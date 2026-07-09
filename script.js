@@ -176,3 +176,8 @@ function checkout() {
 }
 
 document.addEventListener("DOMContentLoaded", updateCart);
+
+function closeCateringPopup() {
+    const popup = document.getElementById("catering-popup");
+    popup.style.display = "none";
+}
