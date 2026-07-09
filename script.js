@@ -9,23 +9,25 @@ function addToCart(name, price) {
 }
 
 function updateCart() {
-    const cartList = document.getElementById("cart");
-    const totalBox = document.getElementById("total");
+  const cartList = document.getElementById("cart");
+  const totalBox = document.getElementById("total");
 
-    cartList.innerHTML = "";
+  cartList.innerHTML = "";
 
-    cart.forEach((item, index) => {
-        const li = document.createElement("li");
+  cart.forEach((item, index) => {
+    const li = document.createElement("li");
 
-        li.innerHTML = `
-            ${item.name} - $${item.price.toFixed(2)}
-            <button onclick="removeItem(${index})" class="remove-btn">❌ Remove</button>
-        `;
+    li.innerHTML = `
+      ${item.name} - $${item.price.toFixed(2)}
+      <button class="remove-btn" onclick="removeItem(${index})">
+        Remove
+      </button>
+    `;
 
-        cartList.appendChild(li);
-    });
+    cartList.appendChild(li);
+  });
 
-    totalBox.textContent = total.toFixed(2);
+  totalBox.textContent = total.toFixed(2);
 }
 
 function addWing5() {
