@@ -54,3 +54,14 @@ function addBananaPudding() {
   item.textContent = `${qty} x ${size}`;
   cart.appendChild(item);
 }
+function addBananaPudding() {
+  const select = document.getElementById("bananaSize");
+  const selected = select.options[select.selectedIndex];
+  const name = selected.value;
+  const price = Number(selected.dataset.price);
+  const qty = Number(document.getElementById("bananaQty").value);
+
+  for (let i = 0; i < qty; i++) {
+    addToCart(name, price);
+  }
+}
