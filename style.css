@@ -290,3 +290,38 @@ input[type="number"] {
   font-size: 1.5rem;
   margin: 15px 0;
 }
+/* Form fields for menu selections */
+select,
+input[type="number"] {
+    width: 90%;
+    max-width: 400px;
+    margin: 10px auto;
+    padding: 12px;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    background: white;
+}
+
+/* Product prices */
+.card strong {
+    display: block;
+    color: #9b1748;
+    font-size: 1.5rem;
+    margin: 15px 0;
+}
+
+/* Product cards */
+.card {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
