@@ -97,11 +97,26 @@
         <strong>$12+</strong>
         <button onclick="addToCart('Chocolate Covered Strawberries', 12)">Add to Cart</button>
       </div>
+<div class="card">
+    <h3>Chocolate Covered Pretzels</h3>
+    <p>Chocolate dipped pretzels</p>
 
+    <input type="number" id="pretzelQty" min="1" value="1">
+
+    <button onclick="addPretzels()">Add to Cart</button>
+</div>
       <div class="card">
         <h3>Banana Pudding Pans</h3>
         <p>Small $10 • Medium $15 • Large $20</p>
         <strong>$10+</strong>
+        <div class="card">
+    <h3>Brownies</h3>
+    <p>Fresh homemade brownies</p>
+
+    <input type="number" id="brownieQty" min="1" value="1">
+
+    <button onclick="addBrownies()">Add to Cart</button>
+</div>
 <select id="bananaSize">
   <option value="Small Banana Pudding Pan" data-price="10">Small - $10</option>
   <option value="Medium Banana Pudding Pan" data-price="15">Medium - $15</option>
