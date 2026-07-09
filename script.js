@@ -1,182 +1,178 @@
 let cart = [];
-let total = 0;
 
-// Wing Meals
-const wing5Flavor = document.getElementById("wing5Flavor");
-const wing5Type = document.getElementById("wing5Type");
-const wing5Drink = document.getElementById("wing5Drink");
-const wing5Qty = document.getElementById("wing5Qty");
+function money(amount) {
+  return Number(amount).toFixed(2);
+}
 
-const wing10Flavor = document.getElementById("wing10Flavor");
-const wing10Type = document.getElementById("wing10Type");
-const wing10Drink = document.getElementById("wing10Drink");
-const wing10Qty = document.getElementById("wing10Qty");
+function getElement(id) {
+  return document.getElementById(id);
+}
 
-// Combo
-const comboFlavor = document.getElementById("comboFlavor");
-const comboDrink = document.getElementById("comboDrink");
-const comboQty = document.getElementById("comboQty");
+function getQty(id) {
+  const value = Number(getElement(id).value);
+  if (!Number.isFinite(value) || value < 1) return 1;
+  return Math.floor(value);
+}
 
-// Cakes
-const cakeFlavor = document.getElementById("cakeFlavor");
-const cakeSize = document.getElementById("cakeSize");
-const cakeQty = document.getElementById("cakeQty");
+function getSelectedOption(selectId) {
+  const select = getElement(selectId);
+  return select.options[select.selectedIndex];
+}
 
-// Cookies
-const cookieFlavor = document.getElementById("cookieFlavor");
-const cookieQty = document.getElementById("cookieQty");
-
-// Strawberries
-const strawberrySize = document.getElementById("strawberrySize");
-const strawberryQty = document.getElementById("strawberryQty");
-
-// Pretzels
-const pretzelQty = document.getElementById("pretzelQty");
-
-// Brownies
-const brownieQty = document.getElementById("brownieQty");
-
-// Banana Pudding
-const bananaSize = document.getElementById("bananaSize");
-const bananaQty = document.getElementById("bananaQty");
-function addToCart(name, price) {
-  cart.push({ name, price: Number(price) });
-  total += Number(price);
+function addToCart(name, price, qty = 1) {
+  const cleanQty = Number(qty) > 0 ? Math.floor(Number(qty)) : 1;
+  cart.push({
+    name,
+    price: Number(price),
+    qty: cleanQty
+  });
   updateCart();
+  document.getElementById("checkout").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function cartTotal() {
+  return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 }
 
 function updateCart() {
-  const cartList = document.getElementById("cart");
-  const totalBox = document.getElementById("total");
+  const cartList = getElement("cart");
+  const totalBox = getElement("total");
+  const emptyCart = getElement("emptyCart");
 
   cartList.innerHTML = "";
 
+  if (cart.length === 0) {
+    emptyCart.style.display = "block";
+  } else {
+    emptyCart.style.display = "none";
+  }
+
   cart.forEach((item, index) => {
     const li = document.createElement("li");
-
     li.innerHTML = `
-      ${item.name} - $${item.price.toFixed(2)}
-      <button class="remove-btn" onclick="removeItem(${index})">
-        Remove
-      </button>
+      <span class="cart-item-text">
+        <strong>${item.qty}x</strong> ${item.name}<br>
+        $${money(item.price)} each — $${money(item.price * item.qty)}
+      </span>
+      <button type="button" class="remove-btn" onclick="removeItem(${index})">Remove</button>
     `;
-
     cartList.appendChild(li);
   });
 
-  totalBox.textContent = total.toFixed(2);
+  totalBox.textContent = money(cartTotal());
 }
 
 function removeItem(index) {
-  total -= cart[index].price;
   cart.splice(index, 1);
   updateCart();
 }
 
-function addMultiple(name, price, qty) {
-  for (let i = 0; i < Number(qty); i++) {
-    addToCart(name, price);
+function clearCart() {
+  cart = [];
+  updateCart();
 }
-  
+
 function addWing5() {
-  addMultiple(
-    `5 Piece Wing Meal - ${wing5Flavor.value}, ${wing5Type.value}, ${wing5Drink.value}`,
+  addToCart(
+    `5 Piece Wing Meal - ${getElement("wing5Flavor").value}, ${getElement("wing5Type").value}, ${getElement("wing5Drink").value}`,
     10,
-    Number(wing5Qty.value)
+    getQty("wing5Qty")
   );
 }
 
 function addWing10() {
-  addMultiple(
-    `10 Piece Wing Meal - ${wing10Flavor.value}, ${wing10Type.value}, ${wing10Drink.value}`,
+  addToCart(
+    `10 Piece Wing Meal - ${getElement("wing10Flavor").value}, ${getElement("wing10Type").value}, ${getElement("wing10Drink").value}`,
     15,
-    Number(wing10Qty.value)
+    getQty("wing10Qty")
   );
 }
 
 function addCombo() {
-  addMultiple(
-    `Wing + Rasta Pasta Combo - ${comboFlavor.value}, ${comboDrink.value}`,
+  addToCart(
+    `Wing + Rasta Pasta Combo - ${getElement("comboFlavor").value}, ${getElement("comboDrink").value}`,
     18,
-    Number(comboQty.value)
+    getQty("comboQty")
   );
 }
 
 function addCake() {
-  const option = cakeSize.options[cakeSize.selectedIndex];
-
-  addMultiple(
-    `${option.value} ${cakeFlavor.value} Mini Cake`,
-    Number(option.dataset.price),
-    Number(cakeQty.value)
+  const size = getSelectedOption("cakeSize");
+  addToCart(
+    `${size.value} ${getElement("cakeFlavor").value} Mini Cake`,
+    Number(size.dataset.price),
+    getQty("cakeQty")
   );
 }
 
 function addCookies() {
-  addMultiple(
-    `${cookieFlavor.value} Cookie`,
-    2,
-    Number(cookieQty.value)
-  );
+  addToCart(`${getElement("cookieFlavor").value} Cookie`, 2, getQty("cookieQty"));
 }
 
 function addStrawberries() {
-  const option = strawberrySize.options[strawberrySize.selectedIndex];
-
-  addMultiple(
-    `${option.value} Chocolate Covered Strawberries`,
-    Number(option.dataset.price),
-    Number(strawberryQty.value)
+  const size = getSelectedOption("strawberrySize");
+  addToCart(
+    `${size.value} Chocolate Covered Strawberries`,
+    Number(size.dataset.price),
+    getQty("strawberryQty")
   );
 }
 
 function addPretzels() {
-  addMultiple(
-    "Chocolate Covered Pretzel",
-    1,
-    Number(pretzelQty.value)
-  );
+  addToCart("Chocolate Covered Pretzel", 1, getQty("pretzelQty"));
 }
 
 function addBrownies() {
-  addMultiple(
-    "Brownie",
-    1.50,
-    Number(brownieQty.value)
-  );
+  addToCart("Brownie", 1.5, getQty("brownieQty"));
+}
+
+function addRiceKrispies() {
+  addToCart("Chocolate Covered Rice Krispie Treat", 2, getQty("riceQty"));
+}
+
+function addOreoBalls() {
+  addToCart("Oreo Balls - 3 Count", 5, getQty("oreoBallQty"));
 }
 
 function addBananaPudding() {
-  const option = bananaSize.options[bananaSize.selectedIndex];
-
-  addMultiple(
-    `${option.value} Banana Pudding Pan`,
-    Number(option.dataset.price),
-    Number(bananaQty.value)
+  const size = getSelectedOption("bananaSize");
+  addToCart(
+    `${size.value} Banana Pudding Pan`,
+    Number(size.dataset.price),
+    getQty("bananaQty")
   );
 }
 
 function checkout() {
-  const name = document.getElementById("name").value;
-  const phone = document.getElementById("phone").value;
-  const notes = document.getElementById("notes").value;
+  const name = getElement("name").value.trim();
+  const phone = getElement("phone").value.trim();
+  const notes = getElement("notes").value.trim();
 
-  if (!name || !phone || cart.length === 0) {
-    alert("Please add items to your cart and enter your name and phone number.");
+  if (cart.length === 0) {
+    alert("Please add at least one item to your cart first.");
     return;
   }
+
+  if (!name || !phone) {
+    alert("Please enter your name and phone number before sending your order.");
+    return;
+  }
+
   const orderText = cart
-    .map(item => `${item.name} - $${item.price.toFixed(2)}`)
-    .join("%0A");
+    .map(item => `${item.qty}x ${item.name} - $${money(item.price * item.qty)}`)
+    .join("\n");
 
-const message =
-`New Janasya's Kitchen Order:%0A%0A` +
-`Name: ${name}%0A` +
-`Phone: ${phone}%0A%0A` +
-`Order:%0A${orderText}%0A%0A` +
-`Total: $${total.toFixed(2)}%0A%0A` +
-`Notes: ${notes}`;
+  const message =
+    `New Janasya's Kitchen Order:\n\n` +
+    `Name: ${name}\n` +
+    `Phone: ${phone}\n\n` +
+    `Order:\n${orderText}\n\n` +
+    `Total: $${money(cartTotal())}\n\n` +
+    `Payment Options: Cash App $Ayeitsnasya25, Chime $Janasya-Rivers, Apple Pay 912-592-9236, or Cash at pickup\n\n` +
+    `Notes: ${notes || "None"}`;
 
-window.location.href =
-`sms:9125929236?body=${message}`;
+  const encodedMessage = encodeURIComponent(message);
+  window.location.href = `sms:9125929236?body=${encodedMessage}`;
 }
+
+document.addEventListener("DOMContentLoaded", updateCart);
