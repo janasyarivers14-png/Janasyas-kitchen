@@ -18,75 +18,175 @@
     <p>Welcome to JanasyasKitchen.com — place your order anytime!</p>
   </section>
 
-  <section id="menu">
-    <h2>Wing Friday Menu 🍗</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>5 Piece Wing Meal</h3>
-        <p>Includes drink</p>
-        <strong>$10</strong>
-        <button onclick="addToCart('5 Piece Wing Meal', 10)">Add to Cart</button>
-      </div>
+  <section>
+  <h2>Wing Friday Menu 🍗</h2>
 
-      <div class="card">
-        <h3>10 Piece Wing Meal</h3>
-        <p>Includes drink</p>
-        <strong>$15</strong>
-        <button onclick="addToCart('10 Piece Wing Meal', 15)">Add to Cart</button>
-      </div>
+  <div class="grid">
+    <div class="card">
+      <h3>5 Piece Wing Meal</h3>
+      <p>Includes drink</p>
 
-      <div class="card">
-        <h3>Wing + Rasta Pasta Combo</h3>
-        <p>6 wings, pasta, dinner roll & drink</p>
-        <strong>$18</strong>
-        <button onclick="addToCart('Wing + Rasta Pasta Combo', 18)">Add to Cart</button>
-      </div>
+      <select id="wing5Flavor">
+        <option>Hot Honey</option>
+        <option>BBQ</option>
+        <option>Buffalo</option>
+        <option>Garlic Parmesan</option>
+        <option>Hot Honey Lemon Pepper</option>
+      </select>
+
+      <select id="wing5Type">
+        <option>Bone-In</option>
+        <option>Boneless</option>
+      </select>
+
+      <select id="wing5Drink">
+        <option>Coke</option>
+        <option>Sprite</option>
+        <option>Dr Pepper</option>
+      </select>
+
+      <input id="wing5Qty" type="number" min="1" value="1">
+
+      <strong>$10</strong>
+      <button onclick="addWing5()">Add to Cart</button>
     </div>
 
-    <h2>Sweets Menu 🍰</h2>
-    <div class="grid">
-      <div class="card">
-     <h3>Mini Cakes</h3>
-<p>Select your flavor and quantity.</p>
+    <div class="card">
+      <h3>10 Piece Wing Meal</h3>
+      <p>Includes drink</p>
 
-<div class="card">
-    <h3>Chocolate Covered Strawberries</h3>
-    <p>6 Count $12 • 12 Count $24 • 24 Count $48</p>
-    <strong>$12+</strong>
-    <button onclick="addToCart('Chocolate Covered Strawberries', 12)">Add to Cart</button>
-</div>
+      <select id="wing10Flavor">
+        <option>Hot Honey</option>
+        <option>BBQ</option>
+        <option>Buffalo</option>
+        <option>Garlic Parmesan</option>
+        <option>Hot Honey Lemon Pepper</option>
+      </select>
 
-<div class="card">
-    <h3>Chocolate Covered Pretzels</h3>
-    <p><strong>$1.00 each</strong></p>
+      <select id="wing10Type">
+        <option>Bone-In</option>
+        <option>Boneless</option>
+      </select>
 
-    <input type="number" id="pretzelQty" min="1" value="1">
+      <select id="wing10Drink">
+        <option>Coke</option>
+        <option>Sprite</option>
+        <option>Dr Pepper</option>
+      </select>
 
-    <button onclick="addPretzels()">Add to Cart</button>
-</div>
+      <input id="wing10Qty" type="number" min="1" value="1">
 
-<div class="card">
-    <h3>Brownies</h3>
-    <p><strong>$1.50 each</strong></p>
+      <strong>$15</strong>
+      <button onclick="addWing10()">Add to Cart</button>
+    </div>
 
-    <input type="number" id="brownieQty" min="1" value="1">
+    <div class="card">
+      <h3>Wing + Rasta Pasta Combo</h3>
+      <p>6 wings, pasta, dinner roll & drink</p>
 
-    <button onclick="addBrownies()">Add to Cart</button>
-</div>
+      <select id="comboFlavor">
+        <option>Hot Honey</option>
+        <option>BBQ</option>
+        <option>Buffalo</option>
+        <option>Garlic Parmesan</option>
+        <option>Hot Honey Lemon Pepper</option>
+      </select>
 
-<div class="card">
-    <h3>Banana Pudding Pans</h3>
+      <select id="comboDrink">
+        <option>Coke</option>
+        <option>Sprite</option>
+        <option>Dr Pepper</option>
+      </select>
 
-    <select id="bananaSize">
-        <option value="Small Banana Pudding Pan" data-price="10">Small - $10</option>
-        <option value="Medium Banana Pudding Pan" data-price="15">Medium - $15</option>
-        <option value="Large Banana Pudding Pan" data-price="20">Large - $20</option>
-    </select>
+      <input id="comboQty" type="number" min="1" value="1">
 
-    <input type="number" id="bananaQty" min="1" value="1">
+      <strong>$18</strong>
+      <button onclick="addCombo()">Add to Cart</button>
+    </div>
+  </div>
+</section>
 
-    <button onclick="addBananaPudding()">Add to Cart</button>
-</div>
+<section>
+  <h2>Sweets Menu 🍰</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Mini Cakes</h3>
+
+      <select id="cakeFlavor">
+        <option>Oreo</option>
+        <option>Biscoff</option>
+        <option>Red Velvet</option>
+        <option>Strawberry Crunch</option>
+        <option>Banana Pudding</option>
+      </select>
+
+      <select id="cakeSize">
+        <option value="Small" data-price="2.50">Small - $2.50</option>
+        <option value="Large" data-price="4">Large - $4</option>
+      </select>
+
+      <input id="cakeQty" type="number" min="1" value="1">
+      <button onclick="addCake()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Cookies</h3>
+
+      <select id="cookieFlavor">
+        <option>Oreo</option>
+        <option>Red Velvet</option>
+        <option>Strawberry Crunch</option>
+        <option>Sprinkles</option>
+        <option>Biscoff</option>
+      </select>
+
+      <input id="cookieQty" type="number" min="1" value="1">
+      <strong>$2 each</strong>
+      <button onclick="addCookies()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Chocolate Covered Strawberries</h3>
+
+      <select id="strawberrySize">
+        <option value="6 Count" data-price="12">6 Count - $12</option>
+        <option value="12 Count" data-price="24">12 Count - $24</option>
+        <option value="24 Count" data-price="48">24 Count - $48</option>
+      </select>
+
+      <input id="strawberryQty" type="number" min="1" value="1">
+      <button onclick="addStrawberries()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Chocolate Covered Pretzels</h3>
+      <strong>$1 each</strong>
+      <input id="pretzelQty" type="number" min="1" value="1">
+      <button onclick="addPretzels()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Brownies</h3>
+      <strong>$1.50 each</strong>
+      <input id="brownieQty" type="number" min="1" value="1">
+      <button onclick="addBrownies()">Add to Cart</button>
+    </div>
+
+    <div class="card">
+      <h3>Banana Pudding Pans</h3>
+
+      <select id="bananaSize">
+        <option value="Small" data-price="10">Small - $10</option>
+        <option value="Medium" data-price="15">Medium - $15</option>
+        <option value="Large" data-price="20">Large - $20</option>
+      </select>
+
+      <input id="bananaQty" type="number" min="1" value="1">
+      <button onclick="addBananaPudding()">Add to Cart</button>
+    </div>
+  </div>
+</section>
   <section class="checkout">
     <h2>Your Cart 🛒</h2>
     <ul id="cart"></ul>
@@ -102,16 +202,3 @@
   <footer>
     <p>© 2026 Janasya's Kitchen | JanasyasKitchen.com</p>
   </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
-<select id="bananaSize">
-  <option value="Small Banana Pudding Pan - $10">Small - $10</option>
-  <option value="Medium Banana Pudding Pan - $15">Medium - $15</option>
-  <option value="Large Banana Pudding Pan - $20">Large - $20</option>
-</select>
-
-<input id="bananaQty" type="number" min="1" value="1">
-
-<button onclick="addBananaPudding()">Add to Cart</button>
