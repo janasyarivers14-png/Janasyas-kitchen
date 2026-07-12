@@ -109,123 +109,112 @@
     5,
     Number(boudinQty.value)
   )">
-    $5 Add to Cart
+    Add to Cart
   </button>
 </div>
       
   </div>
 </section>
 
-    <section class="section sweets">
-    <h2>Sweets & Treats 🍰</h2>
+    <section class="menu-section" id="sweets">
+  <h2>Sweets & Treats 🍰</h2>
 
-    <div class="grid">
+  <div class="menu-grid">
 
-        <!-- Mini Cakes -->
-        <div class="card">
-<h3>Mini Cakes</h3>
-<p>Choose your favorite flavor.</p>
+    <div class="menu-item">
+      <h3>Mini Cakes</h3>
+      <p>Choose your favorite flavor.</p>
 
-<select id="cakeFlavor">
-  <option>Oreo</option>
-  <option>Biscoff</option>
-  <option>Red Velvet</option>
-  <option>Strawberry Crunch</option>
-  <option>Banana Pudding</option>
-</select>
+      <select id="cakeFlavor">
+        <option>Oreo</option>
+        <option>Biscoff</option>
+        <option>Red Velvet</option>
+        <option>Strawberry Crunch</option>
+        <option>Banana Pudding</option>
+      </select>
 
-<p class="price">$2.50 Small</p>
-<button onclick="addToCart('Small ' + cakeFlavor.value + ' Mini Cake', 2.50)">
-  Add to Cart
-</button>
+      <p class="price">$2.50 Small</p>
+      <button onclick="addToCart('Small ' + cakeFlavor.value + ' Mini Cake', 2.50)">
+        Add to Cart
+      </button>
 
-<p class="price">$4.00 Large</p>
-<button onclick="addToCart('Large ' + cakeFlavor.value + ' Mini Cake', 4)">
-  Add to Cart
-</button>
-
-        <!-- Cookies -->
-        <div class="card">
-         <h3>Cookies</h3>
-
-<select id="cookieFlavor">
-  <option>Oreo</option>
-  <option>Red Velvet</option>
-  <option>Strawberry Crunch</option>
-  <option>Sprinkles</option>
-  <option>Biscoff</option>
-</select>
-
-<p class="price">$2.00 Each</p>
-
-<button onclick="addToCart(cookieFlavor.value + ' Cookie', 2)">
-  Add to Cart
-</button>
-
-        <!-- Brownies -->
-        <div class="card">
-            <h3>Brownies</h3>
-
-            <p class="price-tag">$1.50 Each</p>
-
-            <button onclick="addToCart('Brownie',1.50)">
-                Add to cart
-            </button>
-        </div>
-
-        <!-- Rice Krispie Treats -->
-        <div class="card">
-            <h3>Rice Krispie Treats</h3>
-
-            <p class="price-tag">$2.00 Each</p>
-
-            <button onclick="addToCart('Rice Krispie Treat',2)">
-                Add to cart
-            </button>
-        </div>
-
-        <!-- Chocolate Covered Pretzels -->
-        <div class="card">
-            <h3>Chocolate Covered Pretzels</h3>
-
-            <p class="price-tag">$1.00 Each</p>
-
-            <button onclick="addToCart('Chocolate Covered Pretzel',1)">
-                Add to cart
-            </button>
-        </div>
-
-        <!-- Oreo Balls -->
-        <div class="card">
-            <h3>Oreo Balls</h3>
-
-            <p class="price-tag">3 Count • $5.00</p>
-
-            <button onclick="addToCart('3 Count Oreo Balls',5)">
-                Add to cart
-            </button>
-        </div>
-
-        <!-- Chocolate Covered Strawberries -->
-        <div class="card">
-            <h3>Chocolate Covered Strawberries</h3>
-
-            <button onclick="addToCart('6 Count Chocolate Covered Strawberries',12)">
-                6 Count - $12
-            </button>
-
-            <button onclick="addToCart('12 Count Chocolate Covered Strawberries',24)">
-                12 Count - $24
-            </button>
-
-            <button onclick="addToCart('24 Count Chocolate Covered Strawberries',48)">
-                24 Count - $48
-            </button>
-        </div>
-
+      <p class="price">$4.00 Large</p>
+      <button onclick="addToCart('Large ' + cakeFlavor.value + ' Mini Cake', 4)">
+        Add to Cart
+      </button>
     </div>
-</section>
 
+    <div class="menu-item">
+      <h3>Cookies</h3>
+
+      <select id="cookieFlavor">
+        <option>Oreo</option>
+        <option>Red Velvet</option>
+        <option>Strawberry Crunch</option>
+        <option>Sprinkles</option>
+        <option>Biscoff</option>
+      </select>
+
+      <p class="price">$2.00 Each</p>
+
+      <button onclick="addToCart(cookieFlavor.value + ' Cookie', 2)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="menu-item">
+      <h3>Brownies</h3>
+      <p class="price">$1.50 Each</p>
+      <button onclick="addToCart('Brownie', 1.50)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="menu-item">
+      <h3>Rice Krispie Treats</h3>
+      <p class="price">$2.00 Each</p>
+      <button onclick="addToCart('Rice Krispie Treat', 2)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="menu-item">
+      <h3>Chocolate Covered Pretzels</h3>
+      <p class="price">$1.00 Each</p>
+      <button onclick="addToCart('Chocolate Covered Pretzel', 1)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="menu-item">
+      <h3>Oreo Balls</h3>
+      <p class="price">3 Count • $5.00</p>
+      <button onclick="addToCart('Oreo Balls - 3 Count', 5)">
+        Add to Cart
+      </button>
+    </div>
+
+    <div class="menu-item">
+      <h3>Chocolate Covered Strawberries</h3>
+
+      <p class="price">6 Count • $12</p>
+      <button onclick="addToCart('Chocolate Covered Strawberries - 6 Count', 12)">
+        Add to Cart
+      </button>
+
+      <p class="price">12 Count • $24</p>
+      <button onclick="addToCart('Chocolate Covered Strawberries - 12 Count', 24)">
+        Add to Cart
+      </button>
+
+      <p class="price">24 Count • $48</p>
+      <button onclick="addToCart('Chocolate Covered Strawberries - 24 Count', 48)">
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+</section>
     <section class="section catering-section" id="catering">
       <h2>Catering & Custom Orders 🎉</h2>
       <p>Planning an event? Janasya's Kitchen caters food, treats, dessert tables, birthdays, baby showers, graduations, family gatherings, office lunches, and more.</p>
