@@ -29,3 +29,103 @@
         transform:scale(1.03);
     }
 }
+/* ===== SWEETS & TREATS SEPARATE BOXES ===== */
+
+#sweets {
+  background: white;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 45px;
+  border-radius: 35px;
+}
+
+#sweets h2 {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 35px;
+  color: #3d2020;
+}
+
+#sweets .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 28px;
+}
+
+#sweets .menu-item {
+  background: #fff8fb;
+  border: 3px solid #ffc4d8;
+  border-radius: 30px;
+  padding: 32px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+#sweets .menu-item h3 {
+  color: #ad1f57;
+  font-size: 1.8rem;
+  margin-top: 0;
+  margin-bottom: 18px;
+}
+
+#sweets .menu-item p {
+  margin: 12px 0;
+}
+
+#sweets .menu-item .price {
+  color: #ad1f57;
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin-top: 20px;
+}
+
+#sweets .menu-item select {
+  width: 100%;
+  padding: 18px;
+  margin: 15px 0;
+  border: 3px solid #ffb8cf;
+  border-radius: 22px;
+  background: white;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#sweets .menu-item button {
+  display: inline-block;
+  margin: 10px 6px 18px;
+}
+
+/* Make the strawberry card line up normally */
+#sweets .menu-item:last-child {
+  grid-column: auto;
+}
+
+/* Phone and tablet layout */
+@media (max-width: 750px) {
+  #sweets {
+    margin: 25px;
+    padding: 28px 20px;
+    border-radius: 28px;
+  }
+
+  #sweets h2 {
+    font-size: 2.3rem;
+  }
+
+  #sweets .menu-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  #sweets .menu-item {
+    padding: 25px 18px;
+  }
+}
+#boudinCard {
+  background: #fff8fb;
+  border: 3px solid #ffc4d8;
+  border-radius: 30px;
+  padding: 32px;
+  text-align: center;
+  box-sizing: border-box;
+}
