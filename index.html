@@ -62,7 +62,7 @@
       <input id="wing5Qty" type="number" value="1" min="1">
 
       <button onclick="addToCart('5 Piece Wing Meal - ' + wing5Flavor.value + ' - Drink: ' + wing5Drink.value, 10, wing5Qty.value)">
-        $10 Add to Cart
+        Add to Cart
       </button>
     </div>
 
@@ -91,16 +91,25 @@
       <input id="wing10Qty" type="number" value="1" min="1">
 
       <button onclick="addToCart('10 Piece Wing Meal - ' + wing10Flavor.value + ' - Drink: ' + wing10Drink.value, 15, wing10Qty.value)">
-        $15 Add to Cart
+        Add to Cart
       </button>
     </div>
-<div class="menu-item">
+<div class="menu-item wing-card">
   <h3>🔥 Boudin Balls</h3>
-  <p>2 crispy boudin balls</p>
+
   <p class="price">$5.00</p>
 
-  <button onclick="addToCart('Boudin Balls - 2 Count', 5)">
-    Add to Cart
+  <p>2 crispy boudin balls</p>
+
+  <label>Quantity</label>
+  <input id="boudinQty" type="number" value="1" min="1">
+
+  <button onclick="addToCart(
+    'Boudin Balls - 2 Count',
+    5,
+    Number(boudinQty.value)
+  )">
+    $5 Add to Cart
   </button>
 </div>
       
@@ -114,42 +123,44 @@
 
         <!-- Mini Cakes -->
         <div class="card">
-            <h3>Mini Cakes</h3>
-            <p>Choose your favorite flavor.</p>
+<h3>Mini Cakes</h3>
+<p>Choose your favorite flavor.</p>
 
-            <select id="miniCakeFlavor">
-                <option>Oreo</option>
-                <option>Biscoff</option>
-                <option>Red Velvet</option>
-                <option>Strawberry Crunch</option>
-                <option>Banana Pudding</option>
-            </select>
+<select id="cakeFlavor">
+  <option>Oreo</option>
+  <option>Biscoff</option>
+  <option>Red Velvet</option>
+  <option>Strawberry Crunch</option>
+  <option>Banana Pudding</option>
+</select>
 
-            <button onclick="addToCart(document.getElementById('miniCakeFlavor').value + ' Mini Cake (Small)',2.50)">
-                $2.50 Small
-            </button>
+<p class="price">$2.50 Small</p>
+<button onclick="addToCart('Small ' + cakeFlavor.value + ' Mini Cake', 2.50)">
+  Add to Cart
+</button>
 
-            <button onclick="addToCart(document.getElementById('miniCakeFlavor').value + ' Mini Cake (Large)',4)">
-                $4.00 Large
-            </button>
-        </div>
+<p class="price">$4.00 Large</p>
+<button onclick="addToCart('Large ' + cakeFlavor.value + ' Mini Cake', 4)">
+  Add to Cart
+</button>
 
         <!-- Cookies -->
         <div class="card">
-            <h3>Cookies</h3>
+         <h3>Cookies</h3>
 
-            <select id="cookieFlavor">
-                <option>Oreo</option>
-                <option>Red Velvet</option>
-                <option>Strawberry Crunch</option>
-                <option>Sprinkles</option>
-                <option>Biscoff</option>
-            </select>
+<select id="cookieFlavor">
+  <option>Oreo</option>
+  <option>Red Velvet</option>
+  <option>Strawberry Crunch</option>
+  <option>Sprinkles</option>
+  <option>Biscoff</option>
+</select>
 
-            <button onclick="addToCart(document.getElementById('cookieFlavor').value + ' Cookie',2)">
-                $2.00 Each
-            </button>
-        </div>
+<p class="price">$2.00 Each</p>
+
+<button onclick="addToCart(cookieFlavor.value + ' Cookie', 2)">
+  Add to Cart
+</button>
 
         <!-- Brownies -->
         <div class="card">
@@ -158,7 +169,7 @@
             <p class="price-tag">$1.50 Each</p>
 
             <button onclick="addToCart('Brownie',1.50)">
-                Add Brownie
+                Add to cart
             </button>
         </div>
 
@@ -169,7 +180,7 @@
             <p class="price-tag">$2.00 Each</p>
 
             <button onclick="addToCart('Rice Krispie Treat',2)">
-                Add Rice Krispie
+                Add to cart
             </button>
         </div>
 
@@ -180,7 +191,7 @@
             <p class="price-tag">$1.00 Each</p>
 
             <button onclick="addToCart('Chocolate Covered Pretzel',1)">
-                Add Pretzel
+                Add to cart
             </button>
         </div>
 
@@ -191,7 +202,7 @@
             <p class="price-tag">3 Count • $5.00</p>
 
             <button onclick="addToCart('3 Count Oreo Balls',5)">
-                Add Oreo Balls
+                Add to cart
             </button>
         </div>
 
