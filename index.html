@@ -4,248 +4,257 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Janasya's Kitchen</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="catering-bubble" onclick="toggleCateringCard()">Book Catering</div>
-
-  <div id="catering-card" class="catering-card">
-    <button class="popup-close" onclick="toggleCateringCard()">×</button>
-    <div class="popup-emoji">🎈🎉🍓🍗</div>
-    <div class="popup-badge">✨ NOW CATERING ✨</div>
-    <h2>Book Your Event!</h2>
-    <p>We cater food, treats, dessert tables, birthdays, baby showers, graduations, family events, office lunches, and custom orders.</p>
-    <a href="sms:19125929236" class="popup-btn">📱 Text Janasya</a>
-  </div>
-
-  <header class="site-header">
-    <div class="header-content">
-      <p class="eyebrow">Fresh • Cute • Made With Love</p>
-      <h1>Janasya's Kitchen</h1>
-      <p>Wing Friday plates, sweets, treats, catering, and custom orders 💕</p>
-      <a href="#menu" class="btn">Order Now</a>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="logo" href="#top">Janasya's Kitchen</a>
+      <button id="openCart" class="cart-button">Cart <span id="cartCount">0</span></button>
     </div>
   </header>
 
-  <main>
+  <main id="top">
     <section class="hero">
-      <h2>Good food, sweet treats, and easy ordering</h2>
-      <p>Add what you want to your cart, review your total, then send your order by text.</p>
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">Fresh • Homemade • Made with love</p>
+          <h1>Wings, sweets, and treats made fresh.</h1>
+          <p>Choose your flavors, drinks, quantities, and desserts, then add everything to your cart.</p>
+          <a class="btn" href="#wings">View Menu</a>
+        </div>
+        <div class="hero-card">
+          <div class="hero-icons">🍗 🍰 🍓</div>
+          <h2>Janasya's Kitchen</h2>
+          <p>Wing Friday favorites, boudin balls, sweets, and custom orders.</p>
+        </div>
+      </div>
     </section>
 
-   <section id="menu" class="section">
-  <h2>Wing Friday Menu 🍗</h2>
-  <div class="grid">
+    <section id="wings" class="menu-section">
+      <div class="container">
+        <h2 class="section-title">Wing Friday Menu 🍗</h2>
 
-    <div class="card">
-      <h3>5 Piece Wing Meal</h3>
-      <p class="price-tag">$10.00</p>
-      <p>Includes drink</p>
+        <div class="menu-grid three-columns">
+          <article class="menu-card">
+            <h3>5 Piece Wing Meal</h3>
+            <p class="price">$10.00</p>
+            <p class="description">Includes drink</p>
 
-      <label>Flavor</label>
-      <select id="wing5Flavor">
-        <option>Hot Honey</option>
-        <option>Garlic Parmesan</option>
-        <option>Buffalo</option>
-        <option>BBQ</option>
-        <option>Hot Honey Lemon Pepper</option>
-      </select>
+            <label for="wing5Flavor">Flavor</label>
+            <select id="wing5Flavor">
+              <option>Hot Honey</option>
+              <option>BBQ</option>
+              <option>Buffalo</option>
+              <option>Garlic Parmesan</option>
+              <option>Hot Honey Lemon Pepper</option>
+            </select>
 
-      <label>Drink</label>
-      <select id="wing5Drink">
-        <option>Coke</option>
-        <option>Sprite</option>
-        <option>Dr Pepper</option>
-      </select>
+            <label for="wing5Drink">Drink</label>
+            <select id="wing5Drink">
+              <option>Coke</option>
+              <option>Sprite</option>
+              <option>Dr Pepper</option>
+            </select>
 
-      <label>Quantity</label>
-      <input id="wing5Qty" type="number" value="1" min="1">
+            <label for="wing5Qty">Quantity</label>
+            <input id="wing5Qty" type="number" min="1" value="1">
 
-      <button onclick="addToCart('5 Piece Wing Meal - ' + wing5Flavor.value + ' - Drink: ' + wing5Drink.value, 10, wing5Qty.value)">
-        Add to Cart
-      </button>
-    </div>
+            <button class="btn add-button" data-item="wing5">Add to Cart</button>
+          </article>
 
-    <div class="card">
-      <h3>10 Piece Wing Meal</h3>
-      <p class="price-tag">$15.00</p>
-      <p>Includes drink</p>
+          <article class="menu-card">
+            <h3>10 Piece Wing Meal</h3>
+            <p class="price">$15.00</p>
+            <p class="description">Includes drink</p>
 
-      <label>Flavor</label>
-      <select id="wing10Flavor">
-        <option>Hot Honey</option>
-        <option>Garlic Parmesan</option>
-        <option>Buffalo</option>
-        <option>BBQ</option>
-        <option>Hot Honey Lemon Pepper</option>
-      </select>
+            <label for="wing10Flavor">Flavor</label>
+            <select id="wing10Flavor">
+              <option>Hot Honey</option>
+              <option>BBQ</option>
+              <option>Buffalo</option>
+              <option>Garlic Parmesan</option>
+              <option>Hot Honey Lemon Pepper</option>
+            </select>
 
-      <label>Drink</label>
-      <select id="wing10Drink">
-        <option>Coke</option>
-        <option>Sprite</option>
-        <option>Dr Pepper</option>
-      </select>
+            <label for="wing10Drink">Drink</label>
+            <select id="wing10Drink">
+              <option>Coke</option>
+              <option>Sprite</option>
+              <option>Dr Pepper</option>
+            </select>
 
-      <label>Quantity</label>
-      <input id="wing10Qty" type="number" value="1" min="1">
+            <label for="wing10Qty">Quantity</label>
+            <input id="wing10Qty" type="number" min="1" value="1">
 
-      <button onclick="addToCart('10 Piece Wing Meal - ' + wing10Flavor.value + ' - Drink: ' + wing10Drink.value, 15, wing10Qty.value)">
-        Add to Cart
-      </button>
-    </div>
-<div class="menu-item" id="boudinCard">
-  <h3>🔥 Boudin Balls</h3>
+            <button class="btn add-button" data-item="wing10">Add to Cart</button>
+          </article>
 
-  <p class="price">$5.00</p>
+          <article class="menu-card">
+            <h3>🔥 Boudin Balls</h3>
+            <p class="price">$5.00</p>
+            <p class="description">2 crispy boudin balls</p>
 
-  <p>2 crispy boudin balls</p>
+            <label for="boudinQty">Quantity</label>
+            <input id="boudinQty" type="number" min="1" value="1">
 
-  <label>Quantity</label>
-  <input id="boudinQty" type="number" value="1" min="1">
-
-  <button onclick="addToCart(
-    'Boudin Balls - 2 Count',
-    5,
-    Number(boudinQty.value)
-  )">
-    Add to Cart
-  </button>
-</div>
-      
-  </div>
-</section>
-
-    <section class="menu-section" id="sweets">
-  <h2>Sweets & Treats 🍰</h2>
-
-  <div class="menu-grid">
-
-    <div class="menu-item">
-      <h3>Mini Cakes</h3>
-      <p>Choose your favorite flavor.</p>
-
-      <select id="cakeFlavor">
-        <option>Oreo</option>
-        <option>Biscoff</option>
-        <option>Red Velvet</option>
-        <option>Strawberry Crunch</option>
-        <option>Banana Pudding</option>
-      </select>
-
-      <p class="price">$2.50 Small</p>
-      <button onclick="addToCart('Small ' + cakeFlavor.value + ' Mini Cake', 2.50)">
-        Add to Cart
-      </button>
-
-      <p class="price">$4.00 Large</p>
-      <button onclick="addToCart('Large ' + cakeFlavor.value + ' Mini Cake', 4)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="menu-item">
-      <h3>Cookies</h3>
-
-      <select id="cookieFlavor">
-        <option>Oreo</option>
-        <option>Red Velvet</option>
-        <option>Strawberry Crunch</option>
-        <option>Sprinkles</option>
-        <option>Biscoff</option>
-      </select>
-
-      <p class="price">$2.00 Each</p>
-
-      <button onclick="addToCart(cookieFlavor.value + ' Cookie', 2)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="menu-item">
-      <h3>Brownies</h3>
-      <p class="price">$1.50 Each</p>
-      <button onclick="addToCart('Brownie', 1.50)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="menu-item">
-      <h3>Rice Krispie Treats</h3>
-      <p class="price">$2.00 Each</p>
-      <button onclick="addToCart('Rice Krispie Treat', 2)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="menu-item">
-      <h3>Chocolate Covered Pretzels</h3>
-      <p class="price">$1.00 Each</p>
-      <button onclick="addToCart('Chocolate Covered Pretzel', 1)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="menu-item">
-      <h3>Oreo Balls</h3>
-      <p class="price">3 Count • $5.00</p>
-      <button onclick="addToCart('Oreo Balls - 3 Count', 5)">
-        Add to Cart
-      </button>
-    </div>
-
-    <div class="menu-item">
-      <h3>Chocolate Covered Strawberries</h3>
-
-      <p class="price">6 Count • $12</p>
-      <button onclick="addToCart('Chocolate Covered Strawberries - 6 Count', 12)">
-        Add to Cart
-      </button>
-
-      <p class="price">12 Count • $24</p>
-      <button onclick="addToCart('Chocolate Covered Strawberries - 12 Count', 24)">
-        Add to Cart
-      </button>
-
-      <p class="price">24 Count • $48</p>
-      <button onclick="addToCart('Chocolate Covered Strawberries - 24 Count', 48)">
-        Add to Cart
-      </button>
-    </div>
-
-  </div>
-</section>
-    <section class="section catering-section" id="catering">
-      <h2>Catering & Custom Orders 🎉</h2>
-      <p>Planning an event? Janasya's Kitchen caters food, treats, dessert tables, birthdays, baby showers, graduations, family gatherings, office lunches, and more.</p>
-      <a href="sms:19125929236" class="btn">Text for a Catering Quote</a>
+            <button class="btn add-button" data-item="boudin">Add to Cart</button>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="cart-section" id="cart">
-      <h2>Your Cart 🛒</h2>
-      <div id="cart-items"><p>Your cart is empty.</p></div>
-      <h3>Total: $<span id="total">0.00</span></h3>
-      <button class="clear-btn" onclick="clearCart()">Clear Cart</button>
+    <section id="sweets" class="menu-section sweets-bg">
+      <div class="container">
+        <h2 class="section-title">Sweets & Treats 🍰</h2>
+
+        <div class="menu-grid two-columns">
+          <article class="menu-card">
+            <h3>Mini Cakes</h3>
+            <p class="description">Choose your favorite flavor.</p>
+
+            <label for="cakeFlavor">Flavor</label>
+            <select id="cakeFlavor">
+              <option>Oreo</option>
+              <option>Biscoff</option>
+              <option>Red Velvet</option>
+              <option>Strawberry Crunch</option>
+              <option>Banana Pudding</option>
+            </select>
+
+            <div class="option-row">
+              <div class="option-block">
+                <p class="price">$2.50 Small</p>
+                <button class="btn add-button" data-item="cakeSmall">Add to Cart</button>
+              </div>
+              <div class="option-block">
+                <p class="price">$4.00 Large</p>
+                <button class="btn add-button" data-item="cakeLarge">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-card">
+            <h3>Cookies</h3>
+
+            <label for="cookieFlavor">Flavor</label>
+            <select id="cookieFlavor">
+              <option>Oreo</option>
+              <option>Red Velvet</option>
+              <option>Strawberry Crunch</option>
+              <option>Sprinkles</option>
+              <option>Biscoff</option>
+            </select>
+
+            <p class="price">$2.00 Each</p>
+            <button class="btn add-button" data-item="cookie">Add to Cart</button>
+          </article>
+
+          <article class="menu-card simple-card">
+            <h3>Brownies</h3>
+            <p class="price">$1.50 Each</p>
+            <button class="btn add-button" data-item="brownie">Add to Cart</button>
+          </article>
+
+          <article class="menu-card simple-card">
+            <h3>Rice Krispie Treats</h3>
+            <p class="price">$2.00 Each</p>
+            <button class="btn add-button" data-item="rice">Add to Cart</button>
+          </article>
+
+          <article class="menu-card simple-card">
+            <h3>Chocolate Covered Pretzels</h3>
+            <p class="price">$1.00 Each</p>
+            <button class="btn add-button" data-item="pretzel">Add to Cart</button>
+          </article>
+
+          <article class="menu-card simple-card">
+            <h3>Oreo Balls</h3>
+            <p class="price">3 Count • $5.00</p>
+            <button class="btn add-button" data-item="oreoBalls">Add to Cart</button>
+          </article>
+
+          <article class="menu-card strawberry-card">
+            <h3>Chocolate Covered Strawberries</h3>
+            <div class="option-row three-options">
+              <div class="option-block">
+                <p class="price">6 Count • $12</p>
+                <button class="btn add-button" data-item="straw6">Add to Cart</button>
+              </div>
+              <div class="option-block">
+                <p class="price">12 Count • $24</p>
+                <button class="btn add-button" data-item="straw12">Add to Cart</button>
+              </div>
+              <div class="option-block">
+                <p class="price">24 Count • $48</p>
+                <button class="btn add-button" data-item="straw24">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <section class="payment-box">
-      <h2>Payment Options</h2>
-      <p><strong>Cash App:</strong> $Ayeitsnasya25</p>
-      <p><strong>Chime:</strong> $Janasya-Rivers</p>
-      <p><strong>Apple Pay:</strong> <a href="tel:9125929236">912-592-9236</a></p>
-      <p><strong>Cash:</strong> Allowed at pickup</p>
-    </section>
+    <section class="order-section">
+      <div class="container order-card">
+        <div>
+          <h2>Checkout</h2>
+          <p>Add items to your cart, then send your order by text.</p>
+          <p><strong>Cash App:</strong> $Ayeitsnasya25</p>
+          <p><strong>Chime:</strong> $Janasya-Rivers</p>
+          <p><strong>Apple Pay:</strong> 912-592-9236</p>
+          <p><strong>Cash:</strong> Allowed at pickup</p>
+        </div>
 
-    <section class="checkout" id="contact">
-      <h2>Checkout</h2>
-      <input id="customerName" type="text" placeholder="Your name" />
-      <input id="customerPhone" type="tel" placeholder="Your phone number" />
-      <textarea id="orderNotes" placeholder="Pickup time, payment method, and any extra notes"></textarea>
-      <button onclick="sendOrderText()">Send Order Text</button>
+        <form id="orderForm">
+          <label>Name
+            <input name="name" required placeholder="Your name">
+          </label>
+          <label>Phone
+            <input name="phone" required placeholder="Your phone number">
+          </label>
+          <label>Pickup or Delivery
+            <select name="method">
+              <option>Pickup</option>
+              <option>Delivery</option>
+            </select>
+          </label>
+          <label>Requested Date/Time
+            <input name="dateTime" required placeholder="Friday at 5:00 PM">
+          </label>
+          <label>Notes
+            <textarea name="notes" rows="4" placeholder="Special instructions"></textarea>
+          </label>
+          <button class="btn full" type="submit">Send Order by Text</button>
+          <p id="orderMessage"></p>
+        </form>
+      </div>
     </section>
   </main>
 
-  <footer>© 2026 Janasya's Kitchen | JanasyasKitchen.com</footer>
+  <aside id="cartPanel" class="cart-panel" aria-hidden="true">
+    <div class="cart-header">
+      <h2>Your Cart</h2>
+      <button id="closeCart" aria-label="Close cart">×</button>
+    </div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-footer">
+      <p>Total: <strong id="cartTotal">$0.00</strong></p>
+      <button id="clearCart" class="clear-button">Clear Cart</button>
+    </div>
+  </aside>
+  <div id="overlay" class="overlay"></div>
+  <div id="toast" class="toast">Added to cart 💗</div>
+
+  <footer>
+    <div class="container">
+      <p>© <span id="year"></span> Janasya's Kitchen</p>
+    </div>
+  </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
