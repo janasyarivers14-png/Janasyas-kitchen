@@ -34,17 +34,65 @@ function handleAdd(action) {
       wing10Qty.value
     ),
     boudin: () => addItem('Boudin Balls - 2 Count', 5, boudinQty.value),
-    cakeSmall: () => addItem(`Small ${cakeFlavor.value} Mini Cake`, 2.5),
-    cakeLarge: () => addItem(`Large ${cakeFlavor.value} Mini Cake`, 4),
-    cookie: () => addItem(`${cookieFlavor.value} Cookie`, 2),
-    brownie: () => addItem('Brownie', 1.5),
-    rice: () => addItem('Rice Krispie Treat', 2),
-    pretzel: () => addItem('Chocolate Covered Pretzel', 1),
-    oreoBalls: () => addItem('Oreo Balls - 3 Count', 5),
-    straw6: () => addItem('Chocolate Covered Strawberries - 6 Count', 12),
-    straw12: () => addItem('Chocolate Covered Strawberries - 12 Count', 24),
-    straw24: () => addItem('Chocolate Covered Strawberries - 24 Count', 48)
-  };
+    cakeSmall: () => addItem(
+  `Small ${cakeFlavor.value} Mini Cake`,
+  2.5,
+  cakeSmallQty.value
+),
+
+cakeLarge: () => addItem(
+  `Large ${cakeFlavor.value} Mini Cake`,
+  4,
+  cakeLargeQty.value
+),
+
+cookie: () => addItem(
+  `${cookieFlavor.value} Cookie`,
+  2,
+  cookieQty.value
+),
+
+brownie: () => addItem(
+  'Brownie',
+  1.5,
+  brownieQty.value
+),
+
+rice: () => addItem(
+  'Rice Krispie Treat',
+  2,
+  riceQty.value
+),
+
+pretzel: () => addItem(
+  'Chocolate Covered Pretzel',
+  1,
+  pretzelQty.value
+),
+
+oreoBalls: () => addItem(
+  'Oreo Balls - 3 Count',
+  5,
+  oreoBallsQty.value
+),
+
+straw6: () => addItem(
+  'Chocolate Covered Strawberries - 6 Count',
+  12,
+  straw6Qty.value
+),
+
+straw12: () => addItem(
+  'Chocolate Covered Strawberries - 12 Count',
+  24,
+  straw12Qty.value
+),
+
+straw24: () => addItem(
+  'Chocolate Covered Strawberries - 24 Count',
+  48,
+  straw24Qty.value
+)
 
   if (actions[action]) actions[action]();
 }
