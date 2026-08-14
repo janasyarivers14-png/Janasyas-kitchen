@@ -240,56 +240,39 @@ function showToast() {
   }, 1300);
 }
 
+document.addEventListener("click", function (event) {
+  const button = event.target.closest(".add-button");
+
+  if (button) {
+    event.preventDefault();
+    handleAdd(button.dataset.item);
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
-
-  document.querySelectorAll(".add-button").forEach(button => {
-    button.addEventListener("click", function () {
-      handleAdd(this.dataset.item);
-    });
-  });
-
-  const openCartButton =
-    document.getElementById("openCart");
-
-  const closeCartButton =
-    document.getElementById("closeCart");
-
-  const overlayElement =
-    document.getElementById("overlay");
-
-  const clearCartButton =
-    document.getElementById("clearCart");
+  const openCartButton = document.getElementById("openCart");
+  const closeCartButton = document.getElementById("closeCart");
+  const overlayElement = document.getElementById("overlay");
+  const clearCartButton = document.getElementById("clearCart");
 
   if (openCartButton) {
-    openCartButton.addEventListener(
-      "click",
-      openCartPanel
-    );
+    openCartButton.addEventListener("click", openCartPanel);
   }
 
   if (closeCartButton) {
-    closeCartButton.addEventListener(
-      "click",
-      closeCartPanel
-    );
+    closeCartButton.addEventListener("click", closeCartPanel);
   }
 
   if (overlayElement) {
-    overlayElement.addEventListener(
-      "click",
-      closeCartPanel
-    );
+    overlayElement.addEventListener("click", closeCartPanel);
   }
 
   if (clearCartButton) {
-    clearCartButton.addEventListener(
-      "click",
-      () => {
-        cart.length = 0;
-        saveCart();
-        renderCart();
-      }
-    );
+    clearCartButton.addEventListener("click", () => {
+      cart.length = 0;
+      saveCart();
+      renderCart();
+    });
   }
 
   renderCart();
