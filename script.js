@@ -22,80 +22,106 @@ function addItem(name, price, qty = 1) {
 }
 
 function handleAdd(action) {
+
+  const getValue = (id) => {
+    const element = document.getElementById(id);
+    return element ? element.value : "";
+  };
+
+  const getQty = (id) => {
+    const element = document.getElementById(id);
+
+    if (!element) return 1;
+
+    const qty = parseInt(element.value, 10);
+
+    return Number.isNaN(qty) || qty < 1 ? 1 : qty;
+  };
+
   const actions = {
+
     wing5: () => addItem(
-      `5 Piece Wing Meal - ${wing5Flavor.value} - Drink: ${wing5Drink.value}`,
+      `5 Piece Wing Meal - ${getValue("wing5Flavor")} - Drink: ${getValue("wing5Drink")} - Fries: ${getValue("wing5Fries")}`,
       10,
-      wing5Qty.value
+      getQty("wing5Qty")
     ),
+
     wing10: () => addItem(
-      `10 Piece Wing Meal - ${wing10Flavor.value} - Drink: ${wing10Drink.value}`,
+      `10 Piece Wing Meal - ${getValue("wing10Flavor")} - Drink: ${getValue("wing10Drink")} - Fries: ${getValue("wing10Fries")}`,
       15,
-      wing10Qty.value
+      getQty("wing10Qty")
     ),
-    boudin: () => addItem('Boudin Balls - 2 Count', 5, boudinQty.value),
+
+    boudin: () => addItem(
+      "Boudin Balls - 2 Count",
+      5,
+      getQty("boudinQty")
+    ),
+
     cakeSmall: () => addItem(
-  `Small ${cakeFlavor.value} Mini Cake`,
-  2.5,
-  cakeSmallQty.value
-),
+      `Small ${getValue("cakeFlavor")} Mini Cake`,
+      2.5,
+      getQty("cakeSmallQty")
+    ),
 
-cakeLarge: () => addItem(
-  `Large ${cakeFlavor.value} Mini Cake`,
-  4,
-  cakeLargeQty.value
-),
+    cakeLarge: () => addItem(
+      `Large ${getValue("cakeFlavor")} Mini Cake`,
+      4,
+      getQty("cakeLargeQty")
+    ),
 
-cookie: () => addItem(
-  `${cookieFlavor.value} Cookie`,
-  2,
-  cookieQty.value
-),
+    cookie: () => addItem(
+      `${getValue("cookieFlavor")} Cookie`,
+      2,
+      getQty("cookieQty")
+    ),
 
-brownie: () => addItem(
-  'Brownie',
-  1.5,
-  brownieQty.value
-),
+    brownie: () => addItem(
+      "Brownie",
+      1.5,
+      getQty("brownieQty")
+    ),
 
-rice: () => addItem(
-  'Rice Krispie Treat',
-  2,
-  riceQty.value
-),
+    rice: () => addItem(
+      "Rice Krispie Treat",
+      2,
+      getQty("riceQty")
+    ),
 
-pretzel: () => addItem(
-  'Chocolate Covered Pretzel',
-  1,
-  pretzelQty.value
-),
+    pretzel: () => addItem(
+      "Chocolate Covered Pretzel",
+      1,
+      getQty("pretzelQty")
+    ),
 
-oreoBalls: () => addItem(
-  'Oreo Balls - 3 Count',
-  5,
-  oreoBallsQty.value
-),
+    oreoBalls: () => addItem(
+      "Oreo Balls - 3 Count",
+      5,
+      getQty("oreoBallsQty")
+    ),
 
-straw6: () => addItem(
-  'Chocolate Covered Strawberries - 6 Count',
-  12,
-  straw6Qty.value
-),
+    straw6: () => addItem(
+      "Chocolate Covered Strawberries - 6 Count",
+      12,
+      getQty("straw6Qty")
+    ),
 
-straw12: () => addItem(
-  'Chocolate Covered Strawberries - 12 Count',
-  24,
-  straw12Qty.value
-),
+    straw12: () => addItem(
+      "Chocolate Covered Strawberries - 12 Count",
+      24,
+      getQty("straw12Qty")
+    ),
 
-straw24: () => addItem(
-  'Chocolate Covered Strawberries - 24 Count',
-  48,
-  straw24Qty.value
-)
+    straw24: () => addItem(
+      "Chocolate Covered Strawberries - 24 Count",
+      48,
+      getQty("straw24Qty")
+    )
+  };
 
-  if (actions[action]) actions[action]();
-}
+  if (actions[action]) {
+    actions[action]();
+  }
 
 function renderCart() {
   const cartItems = document.getElementById('cartItems');
