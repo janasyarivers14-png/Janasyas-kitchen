@@ -23,7 +23,7 @@ function addItem(name, price, qty = 1) {
     });
   }
 
- SaveCart();
+  saveCart();
   renderCart();
 }
 
