@@ -8,6 +8,17 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .catering-float-button { position:fixed; right:18px; bottom:20px; z-index:900; border:0; border-radius:50px; cursor:pointer; box-shadow:0 5px 18px rgba(0,0,0,.25); }
+    .catering-modal { display:none; position:fixed; inset:0; z-index:2000; padding:18px; background:rgba(0,0,0,.58); align-items:center; justify-content:center; }
+    .catering-modal.open { display:flex; }
+    .catering-modal-box { position:relative; width:min(650px,100%); max-height:92vh; overflow-y:auto; background:#fff; border-radius:24px; box-shadow:0 15px 45px rgba(0,0,0,.3); }
+    .catering-popup-content { padding:20px; background:transparent; }
+    .catering-popup-content .order-card { display:block; padding:25px; box-shadow:none; }
+    .catering-close-button { position:sticky; top:10px; float:right; margin:10px 10px 0 0; z-index:5; width:42px; height:42px; border:0; border-radius:50%; background:#d41e67; color:#fff; font-size:28px; line-height:1; cursor:pointer; }
+    body.catering-modal-open { overflow:hidden; }
+    @media (max-width:600px) { .catering-modal{padding:8px}.catering-modal-box{max-height:95vh;border-radius:18px}.catering-popup-content{padding:5px}.catering-popup-content .order-card{padding:18px} }
+  </style>
 </head>
 <body>
   <header class="topbar">
@@ -19,20 +30,7 @@
     </div>
   </header>
   
-  <a
-    href="#catering"
-    class="btn"
-    style="
-      position: fixed;
-      right: 18px;
-      bottom: 20px;
-      z-index: 999;
-      border-radius: 50px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.25);
-    "
-  >
-    Book Catering 🎉
-  </a>
+  <button id="openCatering" type="button" class="btn catering-float-button">Book Catering 🎉</button>
   
   <main id="top">
     <section class="hero">
@@ -258,6 +256,46 @@
             <button class="btn add-button" data-item="cookie">Add to Cart</button>
           </article>
 
+          <article class="menu-card strawberry-card">
+            <h3>Cupcakes 🧁</h3>
+            <p class="description">Choose one flavor for each cupcake order.</p>
+            <label for="cupcakeFlavor">Flavor</label>
+            <select id="cupcakeFlavor">
+              <option>Strawberry Crunch</option>
+              <option>Oreo</option>
+              <option>Red Velvet</option>
+              <option>Chocolate</option>
+              <option>Biscoff</option>
+              <option>Sprinkles</option>
+            </select>
+            <div class="option-row three-options">
+              <div class="option-block">
+                <p class="price">1 Cupcake • $2</p>
+                <label for="cupcake1Qty">Quantity</label>
+                <input id="cupcake1Qty" type="number" min="1" value="1">
+                <button type="button" class="btn add-button" data-item="cupcake1">Add to Cart</button>
+              </div>
+              <div class="option-block">
+                <p class="price">6 Count • $12</p>
+                <label for="cupcake6Qty">Quantity</label>
+                <input id="cupcake6Qty" type="number" min="1" value="1">
+                <button type="button" class="btn add-button" data-item="cupcake6">Add to Cart</button>
+              </div>
+              <div class="option-block">
+                <p class="price">12 Count • $24</p>
+                <label for="cupcake12Qty">Quantity</label>
+                <input id="cupcake12Qty" type="number" min="1" value="1">
+                <button type="button" class="btn add-button" data-item="cupcake12">Add to Cart</button>
+              </div>
+              <div class="option-block">
+                <p class="price">24 Count • $48</p>
+                <label for="cupcake24Qty">Quantity</label>
+                <input id="cupcake24Qty" type="number" min="1" value="1">
+                <button type="button" class="btn add-button" data-item="cupcake24">Add to Cart</button>
+              </div>
+            </div>
+          </article>
+
           <article class="menu-card simple-card">
             <h3>Brownies</h3>
             <p class="price">$1.50 Each</p>
@@ -327,10 +365,25 @@
           <p><strong>Apple Pay:</strong> 912-592-9236</p>
           <p><strong>Cash:</strong> Allowed at pickup</p>
         </div>
-    <section id="catering" class="order-section">
-      <div class="container order-card">
-        <div>
-          <h2>Book Janasya’s Kitchen Catering 🎉</h2>
+        <form id="orderForm">
+          <label>Name<input name="name" required placeholder="Your name"></label>
+          <label>Phone<input name="phone" type="tel" required placeholder="Your phone number"></label>
+          <label>Pickup or Delivery<select name="method"><option>Pickup</option><option>Delivery</option></select></label>
+          <label>Requested Date/Time<input name="dateTime" required placeholder="Friday at 5:00 PM"></label>
+          <label>Notes<textarea name="notes" rows="4" placeholder="Special instructions"></textarea></label>
+          <button class="btn full" type="submit">Send Order by Text</button>
+          <p id="orderMessage"></p>
+        </form>
+      </div>
+    </section>
+
+    <div id="cateringModal" class="catering-modal" aria-hidden="true">
+      <div class="catering-modal-box" role="dialog" aria-modal="true" aria-labelledby="cateringTitle">
+        <button id="closeCatering" class="catering-close-button" type="button" aria-label="Close catering form">×</button>
+        <section class="order-section catering-popup-content">
+          <div class="container order-card">
+            <div>
+          <h2 id="cateringTitle">Book Janasya’s Kitchen Catering 🎉</h2>
           <p>
             Tell us about your event. Submitting this form does not
             confirm the booking. We will contact you about availability,
@@ -423,34 +476,11 @@
             Your text-message app will open. Please press Send to
             complete your request.
           </p>
-        </form>
+            </form>
+          </div>
+        </section>
       </div>
-    </section>
-        
-        <form id="orderForm">
-          <label>Name
-            <input name="name" required placeholder="Your name">
-          </label>
-          <label>Phone
-            <input name="phone" required placeholder="Your phone number">
-          </label>
-          <label>Pickup or Delivery
-            <select name="method">
-              <option>Pickup</option>
-              <option>Delivery</option>
-            </select>
-          </label>
-          <label>Requested Date/Time
-            <input name="dateTime" required placeholder="Friday at 5:00 PM">
-          </label>
-          <label>Notes
-            <textarea name="notes" rows="4" placeholder="Special instructions"></textarea>
-          </label>
-          <button class="btn full" type="submit">Send Order by Text</button>
-          <p id="orderMessage"></p>
-        </form>
-      </div>
-    </section>
+    </div>
   </main>
 
   <aside id="cartPanel" class="cart-panel" aria-hidden="true">
@@ -473,6 +503,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=5"></script>
 </body>
 </html>
