@@ -7,18 +7,24 @@ function saveCart() {
 }
 
 function addItem(name, price, qty = 1) {
-  qty = Math.max(1, Number(qty) || 1);
-  const existing = cart.find(item => item.name === name);
+  qty = Math.max(1, parseInt(qty, 10) || 1);
 
-  if (existing) {
-    existing.qty += qty;
+  const existingItem = cart.find(
+    item => item.name === name
+  );
+
+  if (existingItem) {
+    existingItem.qty += qty;
   } else {
-    cart.push({ name, price, qty });
+    cart.push({
+      name: name,
+      price: price,
+      qty: qty
+    });
   }
 
-  saveCart();
+  localStorage.setItem("cart", JSON.stringify(cart));
   renderCart();
-  showToast();
 }
 
 function handleAdd(action) {
