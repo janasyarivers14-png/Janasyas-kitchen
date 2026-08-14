@@ -91,6 +91,30 @@ function handleAdd(action) {
       getQty("cookieQty")
     ),
 
+    cupcake1: () => addItem(
+      `${getValue("cupcakeFlavor")} Cupcake`,
+      2,
+      getQty("cupcake1Qty")
+    ),
+
+    cupcake6: () => addItem(
+      `${getValue("cupcakeFlavor")} Cupcakes - 6 Count`,
+      12,
+      getQty("cupcake6Qty")
+    ),
+
+    cupcake12: () => addItem(
+      `${getValue("cupcakeFlavor")} Cupcakes - 12 Count`,
+      24,
+      getQty("cupcake12Qty")
+    ),
+
+    cupcake24: () => addItem(
+      `${getValue("cupcakeFlavor")} Cupcakes - 24 Count`,
+      48,
+      getQty("cupcake24Qty")
+    ),
+
     brownie: () => addItem(
       "Brownie",
       1.5,
@@ -354,6 +378,34 @@ if (cateringForm) {
       `sms:9125929236?&body=${encodeURIComponent(message)}`;
   });
 }
+
+const cateringModal = document.getElementById("cateringModal");
+const openCateringButton = document.getElementById("openCatering");
+const closeCateringButton = document.getElementById("closeCatering");
+
+function openCateringModal() {
+  if (!cateringModal) return;
+  cateringModal.classList.add("open");
+  cateringModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("catering-modal-open");
+  setTimeout(() => document.getElementById("cateringName")?.focus(), 100);
+}
+
+function closeCateringModal() {
+  if (!cateringModal) return;
+  cateringModal.classList.remove("open");
+  cateringModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("catering-modal-open");
+}
+
+openCateringButton?.addEventListener("click", openCateringModal);
+closeCateringButton?.addEventListener("click", closeCateringModal);
+cateringModal?.addEventListener("click", event => {
+  if (event.target === cateringModal) closeCateringModal();
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeCateringModal();
+});
 
 const year = document.getElementById("year");
 
