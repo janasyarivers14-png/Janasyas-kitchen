@@ -18,7 +18,22 @@
     </button>
     </div>
   </header>
-
+  
+  <a
+    href="#catering"
+    class="btn"
+    style="
+      position: fixed;
+      right: 18px;
+      bottom: 20px;
+      z-index: 999;
+      border-radius: 50px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.25);
+    "
+  >
+    Book Catering 🎉
+  </a>
+  
   <main id="top">
     <section class="hero">
       <div class="container hero-inner">
@@ -312,7 +327,106 @@
           <p><strong>Apple Pay:</strong> 912-592-9236</p>
           <p><strong>Cash:</strong> Allowed at pickup</p>
         </div>
+    <section id="catering" class="order-section">
+      <div class="container order-card">
+        <div>
+          <h2>Book Janasya’s Kitchen Catering 🎉</h2>
+          <p>
+            Tell us about your event. Submitting this form does not
+            confirm the booking. We will contact you about availability,
+            menu choices, and pricing.
+          </p>
+        </div>
 
+        <form id="cateringForm">
+          <label for="cateringName">Your Name</label>
+          <input
+            id="cateringName"
+            name="name"
+            type="text"
+            required
+            placeholder="Your full name"
+          >
+
+          <label for="cateringPhone">Phone Number</label>
+          <input
+            id="cateringPhone"
+            name="phone"
+            type="tel"
+            required
+            placeholder="Your phone number"
+          >
+
+          <label for="eventType">Type of Event</label>
+          <select id="eventType" name="eventType" required>
+            <option value="">Choose an event</option>
+            <option>Birthday Party</option>
+            <option>Wedding</option>
+            <option>Baby Shower</option>
+            <option>Graduation</option>
+            <option>Family Gathering</option>
+            <option>Business Event</option>
+            <option>Church Event</option>
+            <option>Other</option>
+          </select>
+
+          <label for="eventDate">Event Date</label>
+          <input
+            id="eventDate"
+            name="eventDate"
+            type="date"
+            required
+          >
+
+          <label for="eventTime">Event Time</label>
+          <input
+            id="eventTime"
+            name="eventTime"
+            type="time"
+            required
+          >
+
+          <label for="guestCount">Estimated Number of Guests</label>
+          <input
+            id="guestCount"
+            name="guestCount"
+            type="number"
+            min="1"
+            required
+            placeholder="Example: 50"
+          >
+
+          <label for="eventLocation">Event Location</label>
+          <input
+            id="eventLocation"
+            name="eventLocation"
+            type="text"
+            required
+            placeholder="City and event location"
+          >
+
+          <label for="cateringDetails">
+            Food Requests or Additional Details
+          </label>
+          <textarea
+            id="cateringDetails"
+            name="details"
+            rows="5"
+            placeholder="Tell us what food you want and anything else we should know"
+          ></textarea>
+
+          <button class="btn full" type="submit">
+            Send Catering Request by Text
+          </button>
+
+          <p>
+            Your text-message app will open. Please press Send to
+            complete your request.
+          </p>
+        </form>
+      </div>
+    </section>
+        
         <form id="orderForm">
           <label>Name
             <input name="name" required placeholder="Your name">
