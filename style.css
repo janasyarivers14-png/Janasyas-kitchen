@@ -410,3 +410,49 @@ footer {
     font-size: 2.3rem;
   }
 }
+/* FIX MINI CAKE LAYOUT */
+
+.cake-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.cake-option {
+  width: 100%;
+  padding: 22px;
+  border: 2px solid #f5bfd3;
+  border-radius: 22px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cake-option label {
+  display: block;
+  margin: 10px 0 6px;
+  font-weight: 700;
+}
+
+.cake-option input[type="number"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 15px;
+  margin: 0 0 18px;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+.cake-option .add-button {
+  display: inline-block;
+  width: auto;
+  margin: 0 auto;
+}
+
+@media (max-width: 650px) {
+  .cake-options {
+    grid-template-columns: 1fr;
+  }
+}
