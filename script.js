@@ -64,7 +64,15 @@ function handleAdd(action) {
       5,
       getQty("boudinQty")
     ),
-
+    
+    soulFood: () => addItem(
+      `Soul Food Sunday Plate - ${
+        document.getElementById("soulFoodMeal").textContent.trim()
+      }`,
+      15,
+      getQty("soulFoodQty")
+    ),
+    
     cakeSmall: () => addItem(
       `Small ${getValue("cakeFlavor")} Mini Cake`,
       2.5,
