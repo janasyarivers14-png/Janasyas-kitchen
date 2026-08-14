@@ -130,7 +130,7 @@ function handleAdd(action) {
   actions[action]();
 }
 
-} // closes handleAdd
+}
 
 function renderCart() {
   const cartItems =
