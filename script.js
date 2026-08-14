@@ -65,10 +65,10 @@ function handleAdd(action) {
       getQty("boudinQty")
     ),
     
-    soulFood: () => addItem(
+      soulFood: () => addItem(
       `Soul Food Sunday Plate - ${
         document.getElementById("soulFoodMeal").textContent.trim()
-      }`,
+      } - Drink: ${getValue("soulFoodDrink")}`,
       15,
       getQty("soulFoodQty")
     ),
@@ -329,6 +329,32 @@ if (orderForm) {
       `sms:9125929236?&body=${encodeURIComponent(message)}`;
   });
 }
+const cateringForm = document.getElementById("cateringForm");
+
+if (cateringForm) {
+  cateringForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const form = new FormData(cateringForm);
+
+    const message = [
+      "New Janasya's Kitchen Catering Request",
+      "",
+      `Name: ${form.get("name") || ""}`,
+      `Phone: ${form.get("phone") || ""}`,
+      `Event type: ${form.get("eventType") || ""}`,
+      `Event date: ${form.get("eventDate") || ""}`,
+      `Event time: ${form.get("eventTime") || ""}`,
+      `Estimated guests: ${form.get("guestCount") || ""}`,
+      `Location: ${form.get("eventLocation") || ""}`,
+      `Food requests/details: ${form.get("details") || "None"}`
+    ].join("\n");
+
+    window.location.href =
+      `sms:9125929236?&body=${encodeURIComponent(message)}`;
+  });
+}
+
 const year = document.getElementById("year");
 
 if (year) {
