@@ -23,7 +23,7 @@ function addItem(name, price, qty = 1) {
     });
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+ janasyaCart();
   renderCart();
 }
 
@@ -128,34 +128,65 @@ function handleAdd(action) {
   if (actions[action]) {
     actions[action]();
   }
-
+  
 function renderCart() {
-  const cartItems = document.getElementById('cartItems');
-  const cartCount = document.getElementById('cartCount');
-  const cartTotal = document.getElementById('cartTotal');
+  const cartItems =
+    document.getElementById("cartItems");
 
-  const count = cart.reduce((sum, item) => sum + item.qty, 0);
-  const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+  const cartCount =
+    document.getElementById("cartCount");
 
-  cartCount.textContent = count;
-  cartTotal.textContent = money(total);
+  const cartTotal =
+    document.getElementById("cartTotal");
+
+  const count = cart.reduce(
+    (sum, item) => sum + item.qty,
+    0
+  );
+
+  const total = cart.reduce(
+    (sum, item) => sum + item.price * item.qty,
+    0
+  );
+
+  if (cartCount) {
+    cartCount.textContent = count;
+  }
+
+  if (cartTotal) {
+    cartTotal.textContent = money(total);
+  }
+
+  if (!cartItems) return;
 
   cartItems.innerHTML = cart.length
     ? cart.map((item, index) => `
-      <div class="cart-item">
-        <div class="cart-item-top">
-          <strong>${item.name}</strong>
-          <span>${money(item.price * item.qty)}</span>
+        <div class="cart-item">
+          <div class="cart-item-top">
+            <strong>${item.name}</strong>
+            <span>
+              ${money(item.price * item.qty)}
+            </span>
+          </div>
+
+          <div class="qty-controls">
+            <button
+              type="button"
+              onclick="changeQty(${index}, -1)"
+            >−</button>
+
+            <span>${item.qty}</span>
+
+            <button
+              type="button"
+              onclick="changeQty(${index}, 1)"
+            >+</button>
+          </div>
         </div>
-        <div class="qty-controls">
-          <button onclick="changeQty(${index}, -1)">−</button>
-          <span>${item.qty}</span>
-          <button onclick="changeQty(${index}, 1)">+</button>
-        </div>
-      </div>
-    `).join('')
-    : '<p>Your cart is empty.</p>';
+      `).join("")
+    : "<p>Your cart is empty.</p>";
 }
+
 
 function changeQty(index, amount) {
   cart[index].qty += amount;
@@ -181,27 +212,60 @@ function showToast() {
   setTimeout(() => toast.classList.remove('show'), 1300);
 }
 
-document.querySelectorAll('.add-button').forEach(button => {
-  button.addEventListener('click', () => handleAdd(button.dataset.item));
-});
+document.addEventListener("DOMContentLoaded", () => {
 
-openCart.addEventListener('click', openCartPanel);
-closeCart.addEventListener('click', closeCartPanel);
-overlay.addEventListener('click', closeCartPanel);
+  document.querySelectorAll(".add-button").forEach(button => {
+    button.addEventListener("click", function () {
+      handleAdd(this.dataset.item);
+    });
+  });
 
-clearCart.addEventListener('click', () => {
-  cart.length = 0;
-  saveCart();
+  const openCartButton =
+    document.getElementById("openCart");
+
+  const closeCartButton =
+    document.getElementById("closeCart");
+
+  const overlayElement =
+    document.getElementById("overlay");
+
+  const clearCartButton =
+    document.getElementById("clearCart");
+
+  if (openCartButton) {
+    openCartButton.addEventListener(
+      "click",
+      openCartPanel
+    );
+  }
+
+  if (closeCartButton) {
+    closeCartButton.addEventListener(
+      "click",
+      closeCartPanel
+    );
+  }
+
+  if (overlayElement) {
+    overlayElement.addEventListener(
+      "click",
+      closeCartPanel
+    );
+  }
+
+  if (clearCartButton) {
+    clearCartButton.addEventListener(
+      "click",
+      () => {
+        cart.length = 0;
+        saveCart();
+        renderCart();
+      }
+    );
+  }
+
   renderCart();
 });
-
-orderForm.addEventListener('submit', event => {
-  event.preventDefault();
-
-  if (!cart.length) {
-    orderMessage.textContent = 'Please add at least one item to your cart first.';
-    return;
-  }
 
   const form = new FormData(orderForm);
   const orderLines = cart.map(item =>
