@@ -122,37 +122,63 @@
         <h2 class="section-title">Sweets & Treats 🍰</h2>
 
         <div class="menu-grid two-columns">
-          <article class="menu-card">
-            <h3>Mini Cakes</h3>
-            <p class="description">Choose your favorite flavor.</p>
+        <article class="menu-card">
+  <h3>Mini Cakes</h3>
+  <p class="description">Choose your favorite flavor.</p>
 
-            <label for="cakeFlavor">Flavor</label>
-            <select id="cakeFlavor">
-              <option>Oreo</option>
-              <option>Biscoff</option>
-              <option>Red Velvet</option>
-              <option>Strawberry Crunch</option>
-              <option>Banana Pudding</option>
-            </select>
+  <label for="cakeFlavor">Flavor</label>
+  <select id="cakeFlavor">
+    <option>Oreo</option>
+    <option>Biscoff</option>
+    <option>Red Velvet</option>
+    <option>Strawberry Crunch</option>
+    <option>Banana Pudding</option>
+  </select>
 
-            <div class="option-row">
-              <div class="option-block">
-                <p class="price">$2.50 Small</p>
+  <div class="cake-options">
 
-<label for="cakeSmallQty">Quantity</label>
-<input id="cakeSmallQty" type="number" min="1" value="1">
+    <div class="cake-option">
+      <p class="price">$2.50 Small</p>
 
-<button class="btn add-button" data-item="cakeSmall">Add to Cart</button>
-              <div class="option-block">
-                <p class="price">$4.00 Large</p>
+      <label for="cakeSmallQty">Quantity</label>
+      <input
+        id="cakeSmallQty"
+        type="number"
+        min="1"
+        value="1"
+      >
 
-<label for="cakeLargeQty">Quantity</label>
-<input id="cakeLargeQty" type="number" min="1" value="1">
+      <button
+        type="button"
+        class="btn add-button"
+        data-item="cakeSmall"
+      >
+        Add to Cart
+      </button>
+    </div>
 
-<button class="btn add-button" data-item="cakeLarge">Add to Cart</button>
-              </div>
-            </div>
-          </article>
+    <div class="cake-option">
+      <p class="price">$4.00 Large</p>
+
+      <label for="cakeLargeQty">Quantity</label>
+      <input
+        id="cakeLargeQty"
+        type="number"
+        min="1"
+        value="1"
+      >
+
+      <button
+        type="button"
+        class="btn add-button"
+        data-item="cakeLarge"
+      >
+        Add to Cart
+      </button>
+    </div>
+
+  </div>
+</article>
 
           <article class="menu-card">
             <h3>Cookies</h3>
