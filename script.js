@@ -25,6 +25,7 @@ function addItem(name, price, qty = 1) {
 
   saveCart();
   renderCart();
+  showToast();
 }
 
 function handleAdd(action) {
@@ -194,22 +195,47 @@ function changeQty(index, amount) {
   saveCart();
   renderCart();
 }
-
+  
 function openCartPanel() {
-  cartPanel.classList.add('open');
-  overlay.classList.add('show');
-  cartPanel.setAttribute('aria-hidden', 'false');
+  const cartPanel = document.getElementById("cartPanel");
+  const overlay = document.getElementById("overlay");
+
+  if (cartPanel) {
+    cartPanel.classList.add("open");
+    cartPanel.setAttribute("aria-hidden", "false");
+  }
+
+  if (overlay) {
+    overlay.classList.add("show");
+  }
+
+  renderCart();
 }
 
 function closeCartPanel() {
-  cartPanel.classList.remove('open');
-  overlay.classList.remove('show');
-  cartPanel.setAttribute('aria-hidden', 'true');
+  const cartPanel = document.getElementById("cartPanel");
+  const overlay = document.getElementById("overlay");
+
+  if (cartPanel) {
+    cartPanel.classList.remove("open");
+    cartPanel.setAttribute("aria-hidden", "true");
+  }
+
+  if (overlay) {
+    overlay.classList.remove("show");
+  }
 }
 
 function showToast() {
-  toast.classList.add('show');
-  setTimeout(() => toast.classList.remove('show'), 1300);
+  const toast = document.getElementById("toast");
+
+  if (!toast) return;
+
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 1300);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
