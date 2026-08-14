@@ -23,7 +23,7 @@ function addItem(name, price, qty = 1) {
     });
   }
 
- janasyaCart();
+ SaveCart();
   renderCart();
 }
 
@@ -267,30 +267,51 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCart();
 });
 
-  const form = new FormData(orderForm);
-  const orderLines = cart.map(item =>
-    `${item.qty} x ${item.name} - ${money(item.price * item.qty)}`
-  ).join('\n');
+  const orderForm = document.getElementById("orderForm");
 
-  const total = money(cart.reduce((sum, item) => sum + item.price * item.qty, 0));
+if (orderForm) {
+  orderForm.addEventListener("submit", event => {
+    event.preventDefault();
 
-  const message = [
-    `New Janasya's Kitchen Order`,
-    ``,
-    `Name: ${form.get('name')}`,
-    `Phone: ${form.get('phone')}`,
-    `Method: ${form.get('method')}`,
-    `Requested time: ${form.get('dateTime')}`,
-    `Notes: ${form.get('notes') || 'None'}`,
-    ``,
-    `Items:`,
-    orderLines,
-    ``,
-    `Total: ${total}`
-  ].join('\n');
+    if (!cart.length) {
+      alert("Please add at least one item to your cart first.");
+      return;
+    }
 
-  window.location.href = `sms:9125929236?&body=${encodeURIComponent(message)}`;
-});
+    const form = new FormData(orderForm);
 
-document.getElementById('year').textContent = new Date().getFullYear();
-renderCart();
+    const orderLines = cart.map(item =>
+      `${item.qty} x ${item.name} - ${money(item.price * item.qty)}`
+    ).join("\n");
+
+    const total = money(
+      cart.reduce(
+        (sum, item) => sum + item.price * item.qty,
+        0
+      )
+    );
+
+    const message = [
+      "New Janasya's Kitchen Order",
+      "",
+      `Name: ${form.get("name") || ""}`,
+      `Phone: ${form.get("phone") || ""}`,
+      `Method: ${form.get("method") || ""}`,
+      `Requested time: ${form.get("dateTime") || ""}`,
+      `Notes: ${form.get("notes") || "None"}`,
+      "",
+      "Items:",
+      orderLines,
+      "",
+      `Total: ${total}`
+    ].join("\n");
+
+    window.location.href =
+      `sms:9125929236?&body=${encodeURIComponent(message)}`;
+  });
+}
+const year = document.getElementById("year");
+
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
