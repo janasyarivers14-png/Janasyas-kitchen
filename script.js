@@ -127,9 +127,11 @@ function handleAdd(action) {
   };
 
   if (actions[action]) {
-    actions[action]();
-  }
-  
+  actions[action]();
+}
+
+} // closes handleAdd
+
 function renderCart() {
   const cartItems =
     document.getElementById("cartItems");
