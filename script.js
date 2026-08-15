@@ -379,6 +379,27 @@ if (cateringForm) {
   });
 }
 
+const reviewForm = document.getElementById("reviewForm");
+
+if (reviewForm) {
+  reviewForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const form = new FormData(reviewForm);
+    const message = [
+      "New Janasya's Kitchen Review",
+      "",
+      `Name: ${form.get("reviewName") || ""}`,
+      `Rating: ${form.get("rating") || ""}`,
+      `Review: ${form.get("reviewText") || ""}`
+    ].join("\n");
+    window.location.href = `sms:9125929236?&body=${encodeURIComponent(message)}`;
+  });
+}
+
+document.querySelectorAll('.social-coming-soon').forEach(link => {
+  link.addEventListener('click', event => event.preventDefault());
+});
+
 const cateringModal = document.getElementById("cateringModal");
 const openCateringButton = document.getElementById("openCatering");
 const closeCateringButton = document.getElementById("closeCatering");
