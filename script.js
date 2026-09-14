@@ -2,7 +2,11 @@ const flavors=['Hot Honey','BBQ','Buffalo','Garlic Parmesan','Hot Honey Lemon Pe
 const drinks=['Coke','Sprite','Dr Pepper','Kool-Aid','No Drink'];
 const wingChoices=[{label:'Wing type',values:['Bone-In','Boneless']},{label:'Flavor',values:flavors},{label:'Fries',values:['Regular Fries','Loaded Fries (+$2.00)']},{label:'Drink',values:drinks.slice(0,3)}];
 const wings=[{id:'wing5',name:'5 Piece Wing Meal',price:10,note:'Includes fries and a drink',choices:wingChoices},{id:'wing10',name:'10 Piece Wing Meal',price:15,note:'Includes fries and a drink',choices:wingChoices}];
-const specials=[{id:'boudin',name:'Boudin Balls',price:5,note:'2 crispy boudin balls',badge:'Weekly favorite'}];
+// EASY MENU EDIT: Add, remove, or change weekly specials in this list.
+const specials=[
+ {id:'munchie-box',name:'Munchie Box',price:20,note:'Hamburger sliders, hamburger dip, meatballs, and 5 wings',badge:'Wednesday special',choices:[{label:'Wing flavor',values:flavors}]},
+ {id:'boudin',name:'Boudin Balls',price:5,note:'2 crispy boudin balls',badge:'Weekly favorite'}
+];
 const sweets=[
  {id:'cake-s',name:'Small Mini Cake',price:2.5,choices:[{label:'Flavor',values:['Oreo','Biscoff','Red Velvet','Strawberry Crunch','Banana Pudding']}]},{id:'cake-l',name:'Large Mini Cake',price:4,choices:[{label:'Flavor',values:['Oreo','Biscoff','Red Velvet','Strawberry Crunch','Banana Pudding']}]},{id:'cookie',name:'Cookie',price:2,choices:[{label:'Flavor',values:['Oreo','Red Velvet','Strawberry Crunch','Sprinkles','Biscoff']}]},{id:'cupcake',name:'Cupcake',price:2,choices:[{label:'Flavor',values:['Strawberry Crunch','Oreo','Red Velvet','Chocolate','Biscoff','Sprinkles']}]},{id:'cup6',name:'6 Cupcakes',price:12,choices:[{label:'Flavor',values:['Strawberry Crunch','Oreo','Red Velvet','Chocolate','Biscoff','Sprinkles']}]},{id:'cup12',name:'12 Cupcakes',price:24,choices:[{label:'Flavor',values:['Strawberry Crunch','Oreo','Red Velvet','Chocolate','Biscoff','Sprinkles']}]},{id:'cup24',name:'24 Cupcakes',price:48,choices:[{label:'Flavor',values:['Strawberry Crunch','Oreo','Red Velvet','Chocolate','Biscoff','Sprinkles']}]},{id:'brownie',name:'Brownie',price:1.5},{id:'rice',name:'Rice Krispie Treat',price:2},{id:'pretzel',name:'Chocolate Covered Pretzel',price:1},{id:'oreo',name:'3 Oreo Balls',price:5},{id:'straw6',name:'6 Chocolate Covered Strawberries',price:12},{id:'straw12',name:'12 Chocolate Covered Strawberries',price:24},{id:'straw24',name:'24 Chocolate Covered Strawberries',price:48}];
 let cart=[];
