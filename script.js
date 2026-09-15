@@ -4,7 +4,11 @@ const wingChoices=[{label:'Wing type',values:['Bone-In','Boneless']},{label:'Fla
 const wings=[{id:'wing5',name:'5 Piece Wing Meal',price:10,note:'Includes fries and a drink',choices:wingChoices},{id:'wing10',name:'10 Piece Wing Meal',price:15,note:'Includes fries and a drink',choices:wingChoices}];
 // EASY MENU EDIT: Add, remove, or change weekly specials in this list.
 const specials=[
- {id:'munchie-box',name:'Munchie Box',price:20,note:'Hamburger sliders, hamburger dip, meatballs, and 5 wings',badge:'Wednesday special',choices:[{label:'Wing flavor',values:flavors}]},
+ {id:'munchie-box',name:'Munchie Box',price:20,note:'Hamburger sliders, hamburger dip, meatballs, and 5 wings',badge:'Wednesday special',choices:[
+  {label:'Wing flavor',values:flavors},
+  {label:'Fries',values:['No Loaded Fries','Loaded Fries (+$3.00)']}
+]},
+ 
  {id:'boudin',name:'Boudin Balls',price:5,note:'2 crispy boudin balls',badge:'Weekly favorite'}
 ];
 const sweets=[
