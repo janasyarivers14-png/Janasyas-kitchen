@@ -4,11 +4,7 @@ const wingChoices=[{label:'Wing type',values:['Bone-In','Boneless']},{label:'Fla
 const wings=[{id:'wing5',name:'5 Piece Wing Meal',price:10,note:'Includes fries and a drink',choices:wingChoices},{id:'wing10',name:'10 Piece Wing Meal',price:15,note:'Includes fries and a drink',choices:wingChoices}];
 // EASY MENU EDIT: Add, remove, or change weekly specials in this list.
 const specials=[
- {id:'munchie-box',name:'Munchie Box',price:20,note:'Hamburger sliders, hamburger dip, meatballs, and 5 wings',badge:'Wednesday special',choices:[
-  {label:'Wing flavor',values:flavors},
-  {label:'Fries',values:['No Loaded Fries','Loaded Fries (+$3.00)']}
-]},
- 
+ {id:'munchie-box',name:'Munchie Box',price:20,note:'Hamburger sliders, hamburger dip, meatballs, and 5 wings',badge:'Wednesday special',choices:[{label:'Wing flavor',values:flavors},{label:'Fries',values:['No Loaded Fries','Loaded Fries (+$3.00)']}]},
  {id:'boudin',name:'Boudin Balls',price:5,note:'2 crispy boudin balls',badge:'Weekly favorite'}
 ];
 const sweets=[
@@ -22,7 +18,7 @@ const money=n=>'$'+Number(n).toFixed(2), sms=body=>location.href='sms:9125929236
 function card(item){const choices=(item.choices||[]).map(c=>`<label>${c.label}<select data-choice="${c.label}">${c.values.map(v=>`<option>${v}</option>`).join('')}</select></label>`).join('');return `<article class="menu-card" data-id="${item.id}">${item.badge?`<span class="badge">${item.badge}</span>`:''}<div class="card-top"><h3>${item.name}</h3><strong class="item-price">${money(item.price)}</strong></div>${item.note?`<p>${item.note}</p>`:''}${choices}<div class="item-quantity"><span>Quantity</span><div><button type="button" data-minus>−</button><b data-amount>1</b><button type="button" data-plus>+</button></div></div><button class="primary-btn" data-add>Add 1 to cart • ${money(item.price)}</button></article>`}
 function renderMenus(){wingMenu.innerHTML=wings.map(card).join('');specialMenu.innerHTML=specials.map(card).join('')+'<article class="special-note"><span>NEW EACH WEEK</span><h3>More specials coming soon</h3><p>Follow our pages to see what\'s cooking next.</p></article>';soulMenu.innerHTML=card({id:'soul',name:'Soul Food Sunday Plate',price:15,choices:[{label:'Drink',values:drinks}]});sweetMenu.innerHTML=sweets.map(card).join('')}
 function itemById(id){return [...wings,...specials,...sweets,{id:'soul',name:'Soul Food Sunday Plate',price:15}].find(i=>i.id===id)}
-function const price=item.price+(selections.Fries?.startsWith('Loaded Fries')?(item.id==='munchie-box'?3:2):0);
+function cardInfo(el){const item=itemById(el.dataset.id),selections={};el.querySelectorAll('[data-choice]').forEach(s=>selections[s.dataset.choice]=s.value);const qty=+el.querySelector('[data-amount]').textContent;const loadedFriesExtra=selections.Fries?.startsWith('Loaded Fries')?(item.id==='munchie-box'?3:2):0;const price=item.price+loadedFriesExtra;return{item,selections,qty,price}}
 document.addEventListener('click',e=>{const el=e.target.closest('.menu-card');if(el&&(e.target.matches('[data-plus]')||e.target.matches('[data-minus]'))){const n=el.querySelector('[data-amount]');n.textContent=Math.max(1,+n.textContent+(e.target.matches('[data-plus]')?1:-1));updateCard(el)}if(el&&e.target.matches('[data-add]'))addCart(cardInfo(el));if(e.target.matches('[data-close]')||e.target===overlay)closeAll();const minus=e.target.closest('[data-cart-minus]'),plus=e.target.closest('[data-cart-plus]'),remove=e.target.closest('[data-cart-remove]');if(minus)changeQty(Number(minus.dataset.cartMinus),-1);if(plus)changeQty(Number(plus.dataset.cartPlus),1);if(remove)removeItem(Number(remove.dataset.cartRemove))});
 document.addEventListener('change',e=>{if(e.target.matches('[data-choice]'))updateCard(e.target.closest('.menu-card'))});
 function updateCard(el){const x=cardInfo(el);el.querySelector('.item-price').textContent=money(x.price);el.querySelector('[data-add]').textContent=`Add ${x.qty} to cart • ${money(x.price*x.qty)}`}
