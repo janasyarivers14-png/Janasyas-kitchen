@@ -20,8 +20,30 @@
 <p>Bold flavors, sweet treats, and Sunday comfort food—made for you in Douglas, Georgia.</p>
 <div class="hero-actions"><a class="primary-btn" href="#menu">Order now</a><button id="cateringButton" class="outline-btn" type="button">Book catering</button></div>
 <div class="day-banner">📅 <span><b>Wing Wednesday</b><small>Place your order early!</small></span></div></div>
-<div class="hero-art"><div class="gold-ring"></div><img src="images/sticker.jpeg" alt="Janasya's Kitchen logo" onerror="this.style.display='none';this.parentElement.classList.add('logo-fallback');this.parentElement.insertAdjacentHTML('beforeend','<div class=&quot;logo-fallback-text&quot;>Janasya’s<br><span>Kitchen</span><small>Made with love ♥</small></div>')"></div>
-</section>
+<!-- START: JANASYA'S KITCHEN LOGO -->
+<div class="hero-art">
+
+    <div class="gold-ring"></div>
+
+    <img
+        src="images/sticker.jpeg"
+        alt="Janasya's Kitchen Logo"
+        id="kitchenLogo"
+        onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='block';"
+    >
+
+    <div
+        id="logoFallback"
+        class="logo-fallback-text"
+        style="display:none;"
+    >
+        Janasya's
+        <span>Kitchen</span>
+        <small>Made with love ♥</small>
+    </div>
+
+</div>
+<!-- END: JANASYA'S KITCHEN LOGO -->
 <section class="trust-strip"><span>Made fresh</span><i>♥</i><span>Pickup only</span><i>♥</i><span>Made for you</span></section>
 <section id="menu" class="section"><div class="section-heading"><p>Our favorites</p><h2>Wing Wednesday</h2><span>Bone-in or boneless, tossed in your favorite flavor.</span></div><div id="wingMenu" class="menu-grid"></div></section>
 <section id="specials" class="section dark-section"><div class="section-heading"><p>Limited menu</p><h2>Weekly Specials</h2><span>Check here for this week's featured plates and treats.</span></div><div id="specialMenu" class="menu-grid specials"></div></section>
