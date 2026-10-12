@@ -31,8 +31,45 @@ function renderCart(){const count=cart.reduce((n,i)=>n+i.qty,0),total=cart.reduc
 function openThing(el){overlay.classList.remove('hidden');el.classList.remove('hidden');if(el===cartPanel)el.classList.add('open')}
 function closeAll(){overlay.classList.add('hidden');[galleryModal,cateringModal].forEach(x=>x.classList.add('hidden'));cartPanel.classList.remove('open')}
 cartButton.onclick=()=>openThing(cartPanel);galleryButton.onclick=()=>openThing(galleryModal);cateringButton.onclick=()=>openThing(cateringModal);continueCheckout.onclick=closeAll;clearCartButton.onclick=clearCart;
-const galleryImages=Array.from({length:18},(_,i)=>`images/gallery/food-${String(i+1).padStart(2,'0')}.jpg`);
-galleryGrid.innerHTML=galleryImages.map((src,i)=>`<figure class="gallery-item"><img src="${src}" alt="Janasya's Kitchen food ${i+1}" loading="lazy" onerror="this.closest('figure').classList.add('image-missing');this.remove()"><figcaption>Made fresh with love ♥</figcaption><div class="gallery-placeholder" aria-hidden="true">🍽️<span>Add your food photo</span></div></figure>`).join('');
+// ========================================
+// JANASYA'S KITCHEN FOOD GALLERY
+// START: GALLERY CODE
+// ========================================
+
+const galleryImages = Array.from(
+    { length: 18 },
+    (_, i) =>
+        `images/gallery/food-${String(i + 1).padStart(2, '0')}.jpg`
+);
+
+galleryGrid.innerHTML = galleryImages.map((src, i) => `
+    <figure class="gallery-item">
+
+        <img
+            src="${src}"
+            alt="Janasya's Kitchen Food ${i + 1}"
+            loading="lazy"
+            onerror="
+                this.closest('figure').classList.add('image-missing');
+                this.remove();
+            "
+        >
+
+        <figcaption>
+            Made fresh with love ♥
+        </figcaption>
+
+        <div class="gallery-placeholder" aria-hidden="true">
+            🍽️
+            <span>Add your food photo</span>
+        </div>
+
+    </figure>
+`).join('');
+
+// ========================================
+// END: GALLERY CODE
+// ========================================
 function showToast(s){toast.textContent=s;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200)}
 checkoutForm.onsubmit=e=>{e.preventDefault();if(!cart.length)return showToast('Add an item first.');const f=new FormData(e.target),lines=cart.map(i=>`${i.qty} x ${i.name}${Object.values(i.selections||{}).length?' ('+Object.values(i.selections||{}).join(', ')+')':''} - ${money(i.price*i.qty)}`).join('\n'),total=cart.reduce((n,i)=>n+i.price*i.qty,0);sms(`NEW JANASYA'S KITCHEN ORDER\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\nPickup: ${f.get('time')}\nPayment: ${f.get('payment')}\nNotes: ${f.get('notes')||'None'}\n\n${lines}\n\nTOTAL: ${money(total)}\n\nPlease confirm my pickup order.`)};
 reviewForm.onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);sms(`NEW REVIEW\n\nName: ${f.get('name')}\nRating: ${f.get('rating')} stars\nReview: ${f.get('review')}`)};
