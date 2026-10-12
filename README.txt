@@ -1,18 +1,15 @@
-JANASYA'S KITCHEN — LOGO & FOOD GALLERY FIX
+JANASYA'S KITCHEN WEBSITE UPDATE
 
-What's included
-- index.html: the site page, with a logo fallback if images/sticker.jpeg is missing.
-- style.css: responsive styling for the logo, navigation, and food gallery on phones and computers.
-- script.js: menu/cart behavior plus gallery cards that gracefully handle missing food photos.
+This package includes index.html, style.css, script.js, your logo image, and 18 gallery photos.
 
-IMPORTANT PHOTO FOLDERS
-1. Put your real logo image at: images/sticker.jpeg
-2. Put food photos in: images/gallery/food-01.jpg, food-02.jpg, ... food-18.jpg
-3. Keep the names exactly as shown. If you have fewer photos, the unused cards show a friendly placeholder instead of broken-image icons.
-4. The uploaded files did not include your actual logo or food photos, so add your own original images to those folders.
+Soul Food Sunday is updated to: Pot Roast, Rice, Mac and Cheese, Cornbread, and Green Beans. The plate remains $15 and has a drink selector.
 
-HOW TO USE
-Replace the matching index.html, style.css, and script.js files in your existing Janasyas-kitchen website repository with these files. Keep your images folder and other project files. Then publish/deploy the updated site.
+UPLOAD TO GITHUB
+1. Extract this ZIP on your device.
+2. Open your existing website repository.
+3. Upload/replace index.html, style.css, and script.js.
+4. Upload the entire images folder, including images/sticker.jpeg and images/gallery/food-01.jpg through food-18.jpg.
+5. Keep the file and folder names exactly as shown.
+6. Commit the changes and wait for GitHub Pages to publish. Refresh the site.
 
-NOTE
-The original uploads named style.html and index 3.html were GitHub rate-limit pages, not your site's actual source files. This package was rebuilt using the public site's index and JavaScript structure, with a fresh stylesheet and logo/gallery fixes. Please test checkout and forms on your live site before taking orders.
+IMPORTANT: Keep all five top-level items together: index.html, style.css, script.js, images/, and README.txt. Do not upload the ZIP itself as a single file to the repository.
