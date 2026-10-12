@@ -1,3 +1,28 @@
+// Explicit DOM references keep the site working reliably on Safari/iPad and GitHub Pages.
+const wingMenu = document.getElementById('wingMenu');
+const specialMenu = document.getElementById('specialMenu');
+const soulMenu = document.getElementById('soulMenu');
+const sweetMenu = document.getElementById('sweetMenu');
+const cartButton = document.getElementById('cartButton');
+const galleryButton = document.getElementById('galleryButton');
+const cateringButton = document.getElementById('cateringButton');
+const overlay = document.getElementById('overlay');
+const cartPanel = document.getElementById('cartPanel');
+const galleryModal = document.getElementById('galleryModal');
+const cateringModal = document.getElementById('cateringModal');
+const continueCheckout = document.getElementById('continueCheckout');
+const clearCartButton = document.getElementById('clearCartButton');
+const cartCount = document.getElementById('cartCount');
+const checkoutItems = document.getElementById('checkoutItems');
+const checkoutTotal = document.getElementById('checkoutTotal');
+const cartTotal = document.getElementById('cartTotal');
+const cartList = document.getElementById('cartList');
+const galleryGrid = document.getElementById('galleryGrid');
+const toast = document.getElementById('toast');
+const checkoutForm = document.getElementById('checkoutForm');
+const reviewForm = document.getElementById('reviewForm');
+const cateringForm = document.getElementById('cateringForm');
+
 const flavors=['Hot Honey','BBQ','Buffalo','Garlic Parmesan','Hot Honey Lemon Pepper'];
 const drinks=['Coke','Sprite','Dr Pepper','Kool-Aid','No Drink'];
 const wingChoices=[{label:'Wing type',values:['Bone-In','Boneless']},{label:'Flavor',values:flavors},{label:'Fries',values:['Regular Fries','Loaded Fries (+$2.00)']},{label:'Drink',values:drinks.slice(0,3)}];
@@ -16,8 +41,8 @@ try{
 }catch(e){cart=[];localStorage.removeItem('janasyaCart')}
 const money=n=>'$'+Number(n).toFixed(2), sms=body=>location.href='sms:9125929236?&body='+encodeURIComponent(body);
 function card(item){const choices=(item.choices||[]).map(c=>`<label>${c.label}<select data-choice="${c.label}">${c.values.map(v=>`<option>${v}</option>`).join('')}</select></label>`).join('');return `<article class="menu-card" data-id="${item.id}">${item.badge?`<span class="badge">${item.badge}</span>`:''}<div class="card-top"><h3>${item.name}</h3><strong class="item-price">${money(item.price)}</strong></div>${item.note?`<p>${item.note}</p>`:''}${choices}<div class="item-quantity"><span>Quantity</span><div><button type="button" data-minus>−</button><b data-amount>1</b><button type="button" data-plus>+</button></div></div><button class="primary-btn" data-add>Add 1 to cart • ${money(item.price)}</button></article>`}
-function renderMenus(){wingMenu.innerHTML=wings.map(card).join('');specialMenu.innerHTML=specials.map(card).join('')+'<article class="special-note"><span>NEW EACH WEEK</span><h3>More specials coming soon</h3><p>Follow our pages to see what\'s cooking next.</p></article>';soulMenu.innerHTML=card({id:'soul',name:'Soul Food Sunday Plate',price:15,choices:[{label:'Drink',values:drinks}]});sweetMenu.innerHTML=sweets.map(card).join('')}
-function itemById(id){return [...wings,...specials,...sweets,{id:'soul',name:'Soul Food Sunday Plate',price:15}].find(i=>i.id===id)}
+function renderMenus(){wingMenu.innerHTML=wings.map(card).join('');specialMenu.innerHTML=specials.map(card).join('')+'<article class="special-note"><span>NEW EACH WEEK</span><h3>More specials coming soon</h3><p>Follow our pages to see what\'s cooking next.</p></article>';soulMenu.innerHTML=card({id:'soul',name:'Pot Roast Plate',price:15,note:'Includes rice, mac and cheese, cornbread, and green beans.',choices:[{label:'Drink',values:drinks}]});sweetMenu.innerHTML=sweets.map(card).join('')}
+function itemById(id){return [...wings,...specials,...sweets,{id:'soul',name:'Pot Roast Plate',price:15,note:'Includes rice, mac and cheese, cornbread, and green beans.'}].find(i=>i.id===id)}
 function cardInfo(el){const item=itemById(el.dataset.id),selections={};el.querySelectorAll('[data-choice]').forEach(s=>selections[s.dataset.choice]=s.value);const qty=+el.querySelector('[data-amount]').textContent;const loadedFriesExtra=selections.Fries?.startsWith('Loaded Fries')?(item.id==='munchie-box'?3:2):0;const price=item.price+loadedFriesExtra;return{item,selections,qty,price}}
 document.addEventListener('click',e=>{const el=e.target.closest('.menu-card');if(el&&(e.target.matches('[data-plus]')||e.target.matches('[data-minus]'))){const n=el.querySelector('[data-amount]');n.textContent=Math.max(1,+n.textContent+(e.target.matches('[data-plus]')?1:-1));updateCard(el)}if(el&&e.target.matches('[data-add]'))addCart(cardInfo(el));if(e.target.matches('[data-close]')||e.target===overlay)closeAll();const minus=e.target.closest('[data-cart-minus]'),plus=e.target.closest('[data-cart-plus]'),remove=e.target.closest('[data-cart-remove]');if(minus)changeQty(Number(minus.dataset.cartMinus),-1);if(plus)changeQty(Number(plus.dataset.cartPlus),1);if(remove)removeItem(Number(remove.dataset.cartRemove))});
 document.addEventListener('change',e=>{if(e.target.matches('[data-choice]'))updateCard(e.target.closest('.menu-card'))});
@@ -26,50 +51,21 @@ function addCart(x){const key=x.item.id+JSON.stringify(x.selections),old=cart.fi
 function changeQty(index,n){if(cart[index])cart[index].qty+=n;cart=cart.filter(i=>i.qty>0);save()}
 function removeItem(index){cart.splice(index,1);save();showToast('Item removed')}
 function clearCart(){if(!cart.length)return;cart=[];save();showToast('Cart cleared')}
-function save(){try{localStorage.setItem('janasyaCart',JSON.stringify(cart))}catch(e){}renderCart()}
+function save(){localStorage.setItem('janasyaCart',JSON.stringify(cart));renderCart()}
 function renderCart(){const count=cart.reduce((n,i)=>n+i.qty,0),total=cart.reduce((n,i)=>n+i.price*i.qty,0);cartCount.textContent=count;checkoutItems.textContent=count+' '+(count===1?'item':'items');checkoutTotal.textContent=cartTotal.textContent=money(total);clearCartButton.disabled=!cart.length;continueCheckout.style.pointerEvents=cart.length?'auto':'none';continueCheckout.style.opacity=cart.length?'1':'.45';cartList.innerHTML=cart.length?cart.map((i,index)=>{const choices=Object.values(i.selections||{}).filter(Boolean).join(' • ');return `<div class="cart-row"><div><b>${i.name}</b>${choices?`<small>${choices}</small>`:''}<span>${money(i.price*i.qty)}</span><button class="clear-cart" data-cart-remove="${index}" type="button">Remove</button></div><div class="qty"><button data-cart-minus="${index}" type="button">−</button><b>${i.qty}</b><button data-cart-plus="${index}" type="button">+</button></div></div>`}).join(''):'<div class="empty">🛍️<p>Your cart is ready for something delicious.</p></div>'}
 function openThing(el){overlay.classList.remove('hidden');el.classList.remove('hidden');if(el===cartPanel)el.classList.add('open')}
 function closeAll(){overlay.classList.add('hidden');[galleryModal,cateringModal].forEach(x=>x.classList.add('hidden'));cartPanel.classList.remove('open')}
-cartButton.onclick=()=>openThing(cartPanel);galleryButton.onclick=()=>openThing(galleryModal);cateringButton.onclick=()=>openThing(cateringModal);continueCheckout.onclick=closeAll;clearCartButton.onclick=clearCart;
-// ========================================
-// JANASYA'S KITCHEN FOOD GALLERY
-// START: GALLERY CODE
-// ========================================
+cartButton.addEventListener('click',()=>openThing(cartPanel));
+galleryButton.addEventListener('click',()=>openThing(galleryModal));
+cateringButton.addEventListener('click',()=>openThing(cateringModal));
+continueCheckout.addEventListener('click',closeAll);
+clearCartButton.addEventListener('click',clearCart);
 
-const galleryImages = Array.from(
-    { length: 18 },
-    (_, i) =>
-        `images/gallery/food-${String(i + 1).padStart(2, '0')}.jpg`
-);
-
-galleryGrid.innerHTML = galleryImages.map((src, i) => `
-    <figure class="gallery-item">
-
-        <img
-            src="${src}"
-            alt="Janasya's Kitchen Food ${i + 1}"
-            loading="lazy"
-            onerror="
-                this.closest('figure').classList.add('image-missing');
-                this.remove();
-            "
-        >
-
-        <figcaption>
-            Made fresh with love ♥
-        </figcaption>
-
-        <div class="gallery-placeholder" aria-hidden="true">
-            🍽️
-            <span>Add your food photo</span>
-        </div>
-
-    </figure>
-`).join('');
-
-// ========================================
-// END: GALLERY CODE
-// ========================================
+// Load all 18 included food photos into the gallery with a graceful fallback.
+galleryGrid.innerHTML=Array.from({length:18},(_,i)=>{
+  const src=`images/gallery/food-${String(i+1).padStart(2,'0')}.jpg`;
+  return `<figure class="gallery-item"><img src="${src}" alt="Janasya's Kitchen food photo ${i+1}" loading="lazy" onerror="this.closest('figure').classList.add('image-missing');this.remove();"><figcaption>Made fresh with love ♥</figcaption><div class="gallery-placeholder" aria-hidden="true">🍽️<span>Food photo unavailable</span></div></figure>`;
+}).join('');
 function showToast(s){toast.textContent=s;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),2200)}
 checkoutForm.onsubmit=e=>{e.preventDefault();if(!cart.length)return showToast('Add an item first.');const f=new FormData(e.target),lines=cart.map(i=>`${i.qty} x ${i.name}${Object.values(i.selections||{}).length?' ('+Object.values(i.selections||{}).join(', ')+')':''} - ${money(i.price*i.qty)}`).join('\n'),total=cart.reduce((n,i)=>n+i.price*i.qty,0);sms(`NEW JANASYA'S KITCHEN ORDER\n\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\nPickup: ${f.get('time')}\nPayment: ${f.get('payment')}\nNotes: ${f.get('notes')||'None'}\n\n${lines}\n\nTOTAL: ${money(total)}\n\nPlease confirm my pickup order.`)};
 reviewForm.onsubmit=e=>{e.preventDefault();const f=new FormData(e.target);sms(`NEW REVIEW\n\nName: ${f.get('name')}\nRating: ${f.get('rating')} stars\nReview: ${f.get('review')}`)};
